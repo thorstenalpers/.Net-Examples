@@ -8,8 +8,16 @@ Microsoft offers a great way to add static code analysis to .net projects.
 2. Open the file from within Visual Studio
 3. Group the rules by category
 4. Either set severity level of each rule or use severity levels from an existing ruleset
-5. Add nuget FxCop to each project
-6. Rebuild solution
+5. Add nuget package FxCop as reference to each project
+6. Reference the new ruleset file for each project 
+
+```xml
+<PropertyGroup>
+  <CodeAnalysisRuleSet>..\custom.ruleset</CodeAnalysisRuleSet>
+</PropertyGroup>
+```
+7. Rebuild solution
+
 
 That's it! Now compiler Roslyn shows the issues and Intellisense gives hints how to fix them.
 
