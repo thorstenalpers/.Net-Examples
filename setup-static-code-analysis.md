@@ -1,4 +1,4 @@
-# Set up coding static code analysis with FxCop
+# Set up static code analysis with FxCop
 
 Microsoft offers a great way to add static code analysis to .net projects.
 
