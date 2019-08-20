@@ -1,4 +1,4 @@
-# Set up coding style conventions with .editorconfig
+# Set up coding conventions with .editorconfig
 
 Microsoft recommend to use an .editorconfig file to define and share coding convention rules between a team.
 
