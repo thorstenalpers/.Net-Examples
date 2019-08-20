@@ -1,7 +1,7 @@
 # Set up coding conventions with .editorconfig
 
 Microsoft recommend to use an .editorconfig file to define and share coding convention rules between a team.
-Editorconfigs is a standardized way to define coding styling conventions. It can be used for different programming languages and is supported from all popular IDEs like Visual Studio, Eclipse and much more.
+Editorconfigs is a standardized way to define coding styling conventions. It can be used for different programming languages and is supported by all popular IDEs like Visual Studio, Eclipse and much more.
 
 ## Installation
 
