@@ -6,7 +6,7 @@ Editorconfigs is a standardized way to define coding styling conventions. It can
 ## Installation
 
 1. Add a .editorconfig file to the solution folder
-2. Copy the recommened default options from [microsoft's example](https://github.com/MicrosoftDocs/visualstudio-docs/blob/master/docs/ide/editorconfig-code-style-settings-reference.md) and insert it into the .editorconfig file
+2. Copy the recommened default options from [.editorconfig example from Microsoft](https://github.com/MicrosoftDocs/visualstudio-docs/blob/master/docs/ide/editorconfig-code-style-settings-reference.md) and insert it into the .editorconfig file
 3. Rebuild solution
 
 That's it! Compiler Roslyn and Intellisense supports .editorconfig natively.
@@ -33,10 +33,9 @@ dotnet_style_qualification_for_event = true:warning
 
 ![Live Demo](./images/editorconfig-livedemo.gif "Live Demo")
 
+## See also
 
-## Links
-
-* https://editorconfig.org/
-* https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
-* https://github.com/MicrosoftDocs/visualstudio-docs/blob/master/docs/ide/editorconfig-code-style-settings-reference.md
-* https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference
+* [Website of the EditorConfig project](https://editorconfig.org/)
+* [GitHub Wiki of EditorConfig](https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties)
+* [Microsoft documentation about it's editor config settings](https://github.com/MicrosoftDocs/visualstudio-docs/blob/master/docs/ide/editorconfig-code-style-settings-reference.md)
+* [Microsoft GitHub documentation about it's editor config settings](https://docs.microsoft.com/en-us/visualstudio/ide/editorconfig-code-style-settings-reference)
