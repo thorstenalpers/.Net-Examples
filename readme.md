@@ -1,3 +1,7 @@
-# .Net Core HowTos
+# Tutorials
 
-This repository contains several tutorials and basic introductions about .Net Core.
+This repository contains several tutorials about web development.
+
+## .Net Core
+- [Set up coding conventions with .editorconfig](./.net-core/setup-coding-style-editorconfig.md)
+- [Set up static code analysis with FxCop](./.net-core/setup-static-code-analysis-fxcop.md)
