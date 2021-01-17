@@ -1,0 +1,1 @@
+kubectl delete pv data-rabbitmq-0
