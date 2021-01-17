@@ -8,10 +8,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using sample_healthcheck.Options;
 using System.Linq;
+using Tutorials.HealthCheck.Options;
 
-namespace TutorialHealthCheck
+namespace Tutorials.HealthCheck
 {
     public class Startup
     {
@@ -26,10 +26,10 @@ namespace TutorialHealthCheck
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            HealtCheckOptions hcOptions = new HealtCheckOptions();
-            Configuration.GetSection(HealtCheckOptions.SECTION_NAME).Bind(hcOptions);
+            CustomHealthCheckOptions hcOptions = new CustomHealthCheckOptions();
+            Configuration.GetSection(CustomHealthCheckOptions.SECTION_NAME).Bind(hcOptions);
 
-            services.Configure<HealtCheckOptions>(Configuration.GetSection(HealtCheckOptions.SECTION_NAME));
+            services.Configure<CustomHealthCheckOptions>(Configuration.GetSection(CustomHealthCheckOptions.SECTION_NAME));
             services.AddControllers();
 
             services.AddSwaggerGen(c =>
@@ -40,7 +40,7 @@ namespace TutorialHealthCheck
             var hcBuilder = services.AddHealthChecks();
             if (hcOptions?.RemoteDependencies?.Any() ?? false)
             {
-                hcBuilder.AddCheck<HttpHealthCheck>(nameof(hcOptions.RemoteDependencies), tags: new[] { nameof(EHealthCheckType.BASIC), nameof(EHealthCheckType.ADVANCED) });
+                hcBuilder.AddCheck<HttpHealthCheck>(nameof(hcOptions.RemoteDependencies), tags: new[] { nameof(EHealthCheckType.READINESS), nameof(EHealthCheckType.LIVENESS) });
             }
             hcBuilder.AddKubernetes(setup =>
             {
@@ -63,7 +63,7 @@ namespace TutorialHealthCheck
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<HealthCheckOptions> hcOptions)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<CustomHealthCheckOptions> hcOptions)
         {
             if (env.IsDevelopment())
             {
@@ -82,16 +82,16 @@ namespace TutorialHealthCheck
             app.UseEndpoints(endpoints =>
                {
 
-                   endpoints.MapHealthChecks(hcOptions.Value.BasicApiPath, new HealthCheckOptions
+                   endpoints.MapHealthChecks(hcOptions.Value.ApiPathReadiness, new HealthCheckOptions
                    {
                        AllowCachingResponses = false,
-                       Predicate = (check) => check.Tags.Contains(nameof(EHealthCheckType.BASIC)),
+                       Predicate = (check) => check.Tags.Contains(nameof(EHealthCheckType.READINESS)),
                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                    });
-                   endpoints.MapHealthChecks(hcOptions.Value.AdvancedApiPath, new HealthCheckOptions
+                   endpoints.MapHealthChecks(hcOptions.Value.ApiPathLiveness, new HealthCheckOptions
                    {
                        AllowCachingResponses = false,
-                       Predicate = (check) => check.Tags.Contains(nameof(EHealthCheckType.BASIC)) || check.Tags.Contains(nameof(EHealthCheckType.ADVANCED)),
+                       Predicate = (check) => check.Tags.Contains(nameof(EHealthCheckType.READINESS)) || check.Tags.Contains(nameof(EHealthCheckType.LIVENESS)),
                        ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                    });
 

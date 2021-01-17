@@ -1,24 +1,24 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
-using TutorialHealthCheck.Options;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Tutorials.HealthCheck.Options;
 
-namespace TutorialHealthCheck
+namespace Tutorials.HealthCheck
 {
     public class HttpHealthCheck : IHealthCheck
     {
         private readonly IHttpClientFactory _httpClientFactory;
-        private readonly HealtCheckOptions _remoteOptions;
+        private readonly CustomHealthCheckOptions _customHealthCheckOptions;
 
-        public HttpHealthCheck(IHttpClientFactory httpClientFactory, IOptions<HealtCheckOptions> remoteOptions)
+        public HttpHealthCheck(IHttpClientFactory httpClientFactory, IOptions<CustomHealthCheckOptions> customHealthCheckOptions)
         {
             _httpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
-            _remoteOptions = remoteOptions?.Value ?? throw new ArgumentNullException(nameof(remoteOptions));
+            _customHealthCheckOptions = customHealthCheckOptions?.Value ?? throw new ArgumentNullException(nameof(customHealthCheckOptions));
         }
 
         public async Task<HealthCheckResult> CheckHealthAsync(HealthCheckContext context, CancellationToken cancellationToken = default)
@@ -27,7 +27,7 @@ namespace TutorialHealthCheck
             var healthyResult = new Dictionary<string, string>();
             var isHealthy = true;
 
-            foreach (var uri in _remoteOptions.RemoteDependencies)
+            foreach (var uri in _customHealthCheckOptions.RemoteDependencies)
             {
                 try
                 {

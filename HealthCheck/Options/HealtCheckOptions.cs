@@ -1,9 +1,9 @@
-﻿namespace TutorialHealthCheck.Options
+﻿namespace Tutorials.HealthCheck.Options
 {
     using System;
     using System.Collections.Generic;
 
-    public class HealtCheckOptions
+    public class CustomHealthCheckOptions
     {
         public const string SECTION_NAME = "HealthCheck";
 

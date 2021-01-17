@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace TutorialHealthCheck
+namespace Tutorials.HealthCheck
 {
     public class Program
     {

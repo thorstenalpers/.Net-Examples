@@ -1,6 +1,6 @@
 using System;
 
-namespace TutorialHealthCheck
+namespace Tutorials.HealthCheck
 {
     public class WeatherForecast
     {
