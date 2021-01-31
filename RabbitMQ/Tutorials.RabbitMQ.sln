@@ -1,8 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
-VisualStudioVersion = 16.0.30717.126
-MinimumVisualStudioVersion = 15.0.26124.0
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Rebus", "Rebus", "{4B4C8A65-CAF7-4D9D-BDE3-953FA74D3799}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Masstransit", "Masstransit", "{2AC8FFDB-D693-46E1-BE21-8C91FB29A76F}"
@@ -38,6 +38,14 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{25B91263-7EEC-4CB4-A2D3-65F82208A2A3}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{ADE43849-0A0D-4811-B64A-DD22D473E0D2}"
+	ProjectSection(SolutionItems) = preProject
+		Scripts\1-install-rabbit-mq.cmd = Scripts\1-install-rabbit-mq.cmd
+		Scripts\2-automate-port-forwarding.cmd = Scripts\2-automate-port-forwarding.cmd
+		Scripts\rabbitmq-values.yaml = Scripts\rabbitmq-values.yaml
 	EndProjectSection
 EndProject
 Global
@@ -94,13 +102,6 @@ Global
 		{2CC1D3B4-0C4B-4B94-B457-81C38D4E36E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2CC1D3B4-0C4B-4B94-B457-81C38D4E36E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2CC1D3B4-0C4B-4B94-B457-81C38D4E36E5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{27668032-D88E-4123-A005-47467B394CE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27668032-D88E-4123-A005-47467B394CE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27668032-D88E-4123-A005-47467B394CE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27668032-D88E-4123-A005-47467B394CE4}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{636B65B4-FB08-4AE7-A4FF-DF60F7E85550} = {2AC8FFDB-D693-46E1-BE21-8C91FB29A76F}
@@ -115,8 +116,12 @@ Global
 		{2759D9E4-30CF-46FA-9C95-55468A0E8E9E} = {4B4C8A65-CAF7-4D9D-BDE3-953FA74D3799}
 		{86E79B89-ED97-4A38-8170-3C4A3E45A21E} = {4B4C8A65-CAF7-4D9D-BDE3-953FA74D3799}
 		{2CC1D3B4-0C4B-4B94-B457-81C38D4E36E5} = {4B4C8A65-CAF7-4D9D-BDE3-953FA74D3799}
+		{ADE43849-0A0D-4811-B64A-DD22D473E0D2} = {25B91263-7EEC-4CB4-A2D3-65F82208A2A3}
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {7A5CD26D-A9FE-4C2A-8EF7-CC59DC687E19}
+		SolutionGuid = {DDB37A7B-AE8D-4894-8E55-D5B6B2EB9E54}
 	EndGlobalSection
 EndGlobal
