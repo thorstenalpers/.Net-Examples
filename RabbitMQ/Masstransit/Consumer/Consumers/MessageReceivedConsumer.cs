@@ -17,7 +17,6 @@ namespace Masstransit.Consumer.Consumers
 		public async Task Consume(ConsumeContext<MessageReceived> context)
 		{
 			_logger.LogInformation($"Received message \"{context.Message.Message}\" with id \"{context.Message.CorrelationId}\"");
-			//GetAllMessageConsumer.Messages.Add(context.Message.Message);
 			await Task.CompletedTask;
 		}
 	}

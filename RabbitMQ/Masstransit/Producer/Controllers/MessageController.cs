@@ -21,7 +21,7 @@
 		}
 
 		[HttpPost]
-		public async Task<ActionResult> Post([FromBody] string message)
+		public async Task<ActionResult> Post(string message)
 		{
 			_logger.LogInformation($"User submitted a message \"{message}\"");
 			await _publishEndpoint.Publish<MessageReceived>(new

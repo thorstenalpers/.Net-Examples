@@ -1,20 +1,79 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
-
 namespace Masstransit.Consumer
 {
-	public class Program
+	using System;
+	using Masstransit.Consumer.Consumers;
+	using MassTransit;
+	using Microsoft.Extensions.DependencyInjection;
+	using Microsoft.Extensions.Hosting;
+
+	class Program
 	{
-		public static void Main(string[] args)
+		static void Main(string[] args)
 		{
-			CreateHostBuilder(args).Build().Run();
+			AppDomain.CurrentDomain.UnhandledException += new UnhandledExceptionEventHandler(UnhandledExceptionHandler);
+
+			var builder = Host.CreateDefaultBuilder()
+				.ConfigureServices((hostContext, services) =>
+				{
+					services.AddMassTransit(cfg =>
+					{
+						cfg.AddConsumer<MessageReceivedConsumer>()
+							.Endpoint(e =>
+							{
+
+								//e.
+								// override the default endpoint name
+								//e.Name = "order-service-extreme";
+
+								// specify the endpoint as temporary (may be non-durable, auto-delete, etc.)
+								e.Temporary = false;
+
+								// specify an optional concurrent message limit for the consumer
+								e.ConcurrentMessageLimit = 8;
+
+								// only use if needed, a sensible default is provided, and a reasonable
+								// value is automatically calculated based upon ConcurrentMessageLimit if 
+								// the transport supports it.
+								e.PrefetchCount = 16;
+
+								// set if each service instance should have its own endpoint for the consumer
+								// so that messages fan out to each instance.
+								//e.InstanceId = "something-unique";
+							}
+
+							);
+
+						cfg.AddBus(provider =>
+						{
+							return Bus.Factory.CreateUsingRabbitMq(cfg =>
+							{
+								cfg.Host("localhost", "Masstransit", h =>
+								{
+									h.Username("admin");
+									h.Password("password");
+								});
+								cfg.ReceiveEndpoint("EventReceived", e =>
+								{
+									e.Consumer<MessageReceivedConsumer>(provider);
+								});
+							});
+
+						});
+					});
+
+					services.AddHostedService<MassTransitHostedService>();
+
+					services.AddSingleton<MessageReceivedConsumer>();
+				});
+
+			builder.Build().Run();
 		}
 
-		public static IHostBuilder CreateHostBuilder(string[] args) =>
-			Host.CreateDefaultBuilder(args)
-				.ConfigureWebHostDefaults(webBuilder =>
-				{
-					webBuilder.UseStartup<Startup>();
-				});
+		static void UnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs args)
+		{
+			Exception exception = (Exception)args.ExceptionObject;
+			Console.WriteLine("MyHandler caught : " + exception.Message);
+			Console.WriteLine("Runtime terminating: {0}", args.IsTerminating);
+		}
 	}
 }

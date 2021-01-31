@@ -25,10 +25,9 @@ namespace Masstransit.Producer
 
 			services.AddMassTransit(x =>
 			{
-				x.SetKebabCaseEndpointNameFormatter();
 				x.UsingRabbitMq((context, cfg) =>
 				{
-					cfg.Host(new Uri("localhost:5672"), "Masstransit", h =>
+					cfg.Host("localhost", "Masstransit", "EventReceived",  h =>
 					{
 						h.Username("admin");
 						h.Password("password");
@@ -37,7 +36,6 @@ namespace Masstransit.Producer
 					cfg.ConfigureEndpoints(context);
 				});
 			});
-			services.AddMassTransitHostedService();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
