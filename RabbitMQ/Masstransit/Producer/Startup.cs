@@ -23,14 +23,12 @@ namespace Masstransit.Producer
 			services.AddControllers();
 			services.AddSwaggerGen();
 
-			TimeSpan timeSpan = 
-
 			services.AddMassTransit(x =>
 			{
 				x.SetKebabCaseEndpointNameFormatter();
 				x.UsingRabbitMq((context, cfg) =>
 				{
-					cfg.Host(new Uri("localhost"), h =>
+					cfg.Host(new Uri("localhost:5672"), "Masstransit", h =>
 					{
 						h.Username("admin");
 						h.Password("password");
