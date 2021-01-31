@@ -20,6 +20,7 @@ There is one solution which includes all examples under a separate folder. The s
 
 ## Masstransit
 
+Coming Soon
 
 https://github.com/MassTransit/MassTransit
 https://masstransit-project.com/
@@ -27,4 +28,14 @@ https://masstransit-project.com/
 
 ## Rebus
 
+Coming Soon
+
 https://github.com/rebus-org/Rebus
+
+## EasyNetQ
+
+Coming Soon
+
+## NServiceBus
+
+Coming Soon
