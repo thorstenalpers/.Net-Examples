@@ -6,7 +6,7 @@ Editorconfigs is a standardized way to define coding styling conventions. It can
 ## Installation
 
 1. Add a .editorconfig file to the solution folder
-2. Copy the recommened default options from [.editorconfig example from Microsoft](https://github.com/MicrosoftDocs/visualstudio-docs/blob/master/docs/ide/editorconfig-code-style-settings-reference.md) and insert it into the .editorconfig file
+2. Copy the recommened default options from [.editorconfig example](hhttps://github.com/editorconfig/editorconfig-core-net/blob/master/.editorconfig) and insert it into the .editorconfig file
 3. Rebuild solution
 
 That's it! Compiler Roslyn and Intellisense supports .editorconfig natively.
