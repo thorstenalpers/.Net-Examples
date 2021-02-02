@@ -1,7 +1,8 @@
 # Tutorial - RabbitMQ with .Net 5
 
-RabbitMQ is a great messagbroker. To use it directly is hard, especially in cases of error handling. So there are some popular libraries which I will quick try out.
-There is one solution which includes all examples under a separate folder. The script folder contains some scripts to deploy RabbitMQ and executes the port forwarding.
+RabbitMQ is a great messagbroker which helps in creating microservices which should be loosed coupled. To use RabbitMQ directly is difficult, especially in cases of error handling and dynamically creating queues and so on. 
+There are two popular libraries which I will describe and I will write a simple example application to demonstrate there behaviour.
+I have added one solution which includes all examples, under each folder are all files required for one of those libraries. The script folder contains some scripts to deploy RabbitMQ and executes the port forwarding.
 
 ## Requirements
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
