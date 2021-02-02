@@ -24,10 +24,35 @@ There is one solution which includes all examples under a separate folder. The s
 
 ## Masstransit
 
-Coming Soon
+1) Start Docker
+2) Make Kubernetes ports accessible from local host, Tutorials\RabbitMQ\Scripts\2-automate-port-forwarding.cmd
+3) Add a breakpoint at the EventController where an event gets published
+4) Add a breakpoint to the SomeEventReceivedHandler
+5) Start the Masstransit Producer and Consumer with a Debug configuration
+6) Also open a new browser to see the RabbitMQ queues and exchanges
+7) Post an Event over the SwaggerUI
 
-https://github.com/MassTransit/MassTransit
-https://masstransit-project.com/
+
+### Run multiple projects with VisualStudio
+
+* Right click on the solution and open the properties
+* Select multiple startup projects
+* Select Masstransit Producer and Consumer
+* Press Ok, go back and run them together
+
+![Start multiple projects](..\Docs\assets\RabbitMQ\Masstransit_Multiple_StartUps.png)
+
+
+### Live Demo
+
+
+![Live Demo](..\Docs\assets\RabbitMQ\RabbitMQ_Masstransit_LiveDemo.gif)
+
+
+### Links
+
+* https://github.com/MassTransit/MassTransit
+* https://masstransit-project.com/
 
 
 ## Rebus
