@@ -40,13 +40,13 @@ There is one solution which includes all examples under a separate folder. The s
 * Select Masstransit Producer and Consumer
 * Press Ok, go back and run them together
 
-![Start multiple projects](..\Docs\assets\RabbitMQ\Masstransit_Multiple_StartUps.png)
+![Start multiple projects](../Docs/assets/RabbitMQ/Masstransit_Multiple_StartUps.png)
 
 
 ### Live Demo
 
 
-![Live Demo](..\Docs\assets\RabbitMQ\RabbitMQ_Masstransit_LiveDemo.gif)
+![Live Demo](../Docs/assets/RabbitMQ/RabbitMQ_Masstransit_LiveDemo.gif)
 
 
 ### Links
