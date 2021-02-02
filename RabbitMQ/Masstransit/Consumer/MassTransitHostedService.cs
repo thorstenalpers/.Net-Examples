@@ -30,9 +30,8 @@ namespace Masstransit.Consumer
 			}
 			catch (Exception ex)
 			{
-				Debug.WriteLine(ex);
+				_logger.LogError(ex, ex.Message);
 			}
-			var ff = 9;
 		}
 
 		public async Task StopAsync(CancellationToken cancellationToken)

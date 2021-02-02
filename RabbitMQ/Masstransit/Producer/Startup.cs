@@ -27,7 +27,7 @@ namespace Masstransit.Producer
 			{
 				x.UsingRabbitMq((context, cfg) =>
 				{
-					cfg.Host("localhost", "Masstransit", "EventReceived",  h =>
+					cfg.Host(host: "localhost", virtualHost: "Masstransit",  h =>
 					{
 						h.Username("admin");
 						h.Password("password");

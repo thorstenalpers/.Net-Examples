@@ -47,7 +47,7 @@ namespace Masstransit.Consumer
 						{
 							return Bus.Factory.CreateUsingRabbitMq(cfg =>
 							{
-								cfg.Host("localhost", "Masstransit", h =>
+								cfg.Host(host: "localhost", virtualHost: "Masstransit", h =>
 								{
 									h.Username("admin");
 									h.Password("password");
