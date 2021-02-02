@@ -5,16 +5,16 @@ using System.Threading.Tasks;
 
 namespace Masstransit.Consumer.Consumers
 {
-	public class MessageReceivedConsumer : IConsumer<MessageReceived>
+	public class SomeEventReceivedHandler : IConsumer<SomeEventReceived>
 	{
-		private readonly ILogger<MessageReceivedConsumer> _logger;
+		private readonly ILogger<SomeEventReceivedHandler> _logger;
 
-		public MessageReceivedConsumer(ILogger<MessageReceivedConsumer> logger)
+		public SomeEventReceivedHandler(ILogger<SomeEventReceivedHandler> logger)
 		{
 			_logger = logger;
 		}
 
-		public async Task Consume(ConsumeContext<MessageReceived> context)
+		public async Task Consume(ConsumeContext<SomeEventReceived> context)
 		{
 			_logger.LogInformation($"Received message \"{context.Message.Message}\" with id \"{context.Message.CorrelationId}\"");
 			await Task.CompletedTask;

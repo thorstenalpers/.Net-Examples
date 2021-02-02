@@ -9,12 +9,12 @@
 
 	[ApiController]
 	[Route("[controller]")]
-	public class MessageController : ControllerBase
+	public class EventController : ControllerBase
 	{
 		readonly IPublishEndpoint _publishEndpoint;
-		private readonly ILogger<MessageController> _logger;
+		private readonly ILogger<EventController> _logger;
 
-		public MessageController(ILogger<MessageController> logger, IPublishEndpoint publishEndpoint)
+		public EventController(ILogger<EventController> logger, IPublishEndpoint publishEndpoint)
 		{
 			_publishEndpoint = publishEndpoint;
 			_logger = logger;
@@ -24,7 +24,7 @@
 		public async Task<ActionResult> Post(string message)
 		{
 			_logger.LogInformation($"User submitted a message \"{message}\"");
-			await _publishEndpoint.Publish<MessageReceived>(new
+			await _publishEndpoint.Publish<SomeEventReceived>(new
 			{
 				CorrelationId = Guid.NewGuid(),
 				Message = message

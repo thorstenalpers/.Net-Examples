@@ -17,7 +17,7 @@ namespace Masstransit.Consumer
 				{
 					services.AddMassTransit(cfg =>
 					{
-						cfg.AddConsumer<MessageReceivedConsumer>()
+						cfg.AddConsumer<SomeEventReceivedHandler>()
 							.Endpoint(e =>
 							{
 
@@ -54,7 +54,7 @@ namespace Masstransit.Consumer
 								});
 								cfg.ReceiveEndpoint("EventReceived", e =>
 								{
-									e.Consumer<MessageReceivedConsumer>(provider);
+									e.Consumer<SomeEventReceivedHandler>(provider);
 								});
 							});
 
@@ -63,7 +63,7 @@ namespace Masstransit.Consumer
 
 					services.AddHostedService<MassTransitHostedService>();
 
-					services.AddSingleton<MessageReceivedConsumer>();
+					services.AddSingleton<SomeEventReceivedHandler>();
 				});
 
 			builder.Build().Run();
