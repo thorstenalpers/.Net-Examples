@@ -4,7 +4,7 @@
 	using MassTransit;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.Extensions.Logging;
-	using System.Collections.Generic;
+	using System;
 	using System.Threading.Tasks;
 
 	[ApiController]
@@ -26,7 +26,8 @@
 			_logger.LogInformation($"User submitted a message \"{message}\"");
 			await _publishEndpoint.Publish<MessageReceived>(new
 			{
-				Value = message
+				CorrelationId = Guid.NewGuid(),
+				Message = message
 			});
 			return Ok();
 		}
