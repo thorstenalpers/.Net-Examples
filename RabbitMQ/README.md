@@ -24,6 +24,8 @@ There is one solution which includes all examples under a separate folder. The s
 
 ## Masstransit
 
+With 10 million Nuget downloads, Masstransit is the most popular library for integrating RabbitMQ into a .Net Core application, along with the low-level RabbitMQClient. It provides an abstraction to the transport layer. Besides RabbitMQ also Kafka and similar Messagebroker can be used to deliver messages and events.
+
 1) Start Docker
 2) Make Kubernetes ports accessible from local host, Tutorials\RabbitMQ\Scripts\2-automate-port-forwarding.cmd
 3) Add a breakpoint at the EventController where an event gets published
