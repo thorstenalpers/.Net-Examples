@@ -1,4 +1,4 @@
-# Tutorial - RabbitMQ in .Net
+# Tutorial - RabbitMQ with .Net 5
 
 RabbitMQ is a great messagbroker. To use it directly is hard, especially in cases of error handling. So there are some popular libraries which I will quick try out.
 There is one solution which includes all examples under a separate folder. The script folder contains some scripts to deploy RabbitMQ and executes the port forwarding.
