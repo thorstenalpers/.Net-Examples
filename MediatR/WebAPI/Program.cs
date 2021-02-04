@@ -1,8 +1,8 @@
-﻿namespace Examples.MediatR.WebAPI
-{
-	using Microsoft.AspNetCore.Hosting;
-	using Microsoft.Extensions.Hosting;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Hosting;
 
+namespace Examples.MediatR.WebAPI
+{
 	public class Program
 	{
 		public static void Main(string[] args)

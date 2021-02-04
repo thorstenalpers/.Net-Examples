@@ -10,9 +10,9 @@ namespace Examples.MediatR.Core.Behaviors
 {
     public class GenericPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
-		private readonly ILogger _logger;
+		private readonly ILogger<GenericPipelineBehavior<TRequest, TResponse>> _logger;
 
-		public GenericPipelineBehavior(ILogger logger)
+		public GenericPipelineBehavior(ILogger<GenericPipelineBehavior<TRequest, TResponse>> logger)
         {
 			_logger = logger;
         }
