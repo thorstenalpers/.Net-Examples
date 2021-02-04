@@ -1,32 +1,23 @@
-﻿namespace WebAPI.Controllers
-{
-    using Microsoft.AspNetCore.Routing;
-    using Microsoft.AspNetCore.Mvc;
-    using MediatR;
-    using System.Threading.Tasks;
-    using Core.Requests;
-    using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
+using Examples.MediatR.Core.Requests;
+using System.Diagnostics;
+using MediatR;
 
-    /// <summary>
-    /// Represents a RESTful service to send one way requests with mediatR
-    /// </summary>
-    [ApiController]
+namespace Examples.MediatR.WebAPI.Controllers
+{
+	[ApiController]
     [Route("api/[controller]")]
     public class OneWayRequestController : ControllerBase
     {
         private readonly IMediator _mediator;
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
         public OneWayRequestController(IMediator mediator)
         {
             _mediator = mediator;
         }
 
-        /// <summary>
-        /// Sends a OneWayRequest
-        /// </summary>
         [HttpPost]
         public async Task<IActionResult> Post()
         {

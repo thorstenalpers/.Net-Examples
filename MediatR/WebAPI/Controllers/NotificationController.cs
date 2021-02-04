@@ -1,6 +1,7 @@
-﻿namespace WebAPI.Controllers
+﻿namespace Examples.MediatR.WebAPI.Controllers
 {
     using Core.Notifications;
+    using global::MediatR;
     using MediatR;
     using Microsoft.AspNetCore.Mvc;
     using System.Diagnostics;

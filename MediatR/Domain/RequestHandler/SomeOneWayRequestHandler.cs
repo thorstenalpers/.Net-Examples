@@ -1,15 +1,13 @@
-﻿using Core.Requests;
+﻿using Examples.MediatR.Core.Requests;
 using MediatR;
 using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.RequestHandler
+namespace Examples.MediatR.Domain.RequestHandler
 {
-    public class SomeOneWayRequestHandler : AsyncRequestHandler<SomeOneWayRequest>
+	public class SomeOneWayRequestHandler : AsyncRequestHandler<SomeOneWayRequest>
     {
         protected override async Task Handle(SomeOneWayRequest request, CancellationToken cancellationToken)
         {

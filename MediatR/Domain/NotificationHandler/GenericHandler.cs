@@ -1,14 +1,11 @@
 ﻿using MediatR;
-using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace MediatorHandler.NotificationHandler
+namespace Examples.MediatR.Domain.NotificationHandler
 {
-    public class GenericHandler : INotificationHandler<INotification>
+	public class GenericHandler : INotificationHandler<INotification>
     {
         public Task Handle(INotification notification, CancellationToken cancellationToken)
         {

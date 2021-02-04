@@ -1,12 +1,12 @@
-﻿namespace WebAPI.Controllers
-{
-    using Microsoft.AspNetCore.Routing;
-    using Microsoft.AspNetCore.Mvc;
-    using MediatR;
-    using System.Threading.Tasks;
-    using Core.Requests;
-    using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Routing;
+using Microsoft.AspNetCore.Mvc;
+using MediatR;
+using System.Threading.Tasks;
+using System.Diagnostics;
+using Examples.MediatR.Core.Requests;
 
+namespace WebAPI.Controllers
+{
     /// <summary>
     /// Represents a RESTful service to send requests with mediatR
     /// </summary>

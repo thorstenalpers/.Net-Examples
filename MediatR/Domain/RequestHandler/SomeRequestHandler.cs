@@ -1,11 +1,11 @@
-﻿using Core.Requests;
+﻿using Examples.MediatR.Core.Requests;
 using MediatR;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.RequestHandler
+namespace Examples.MediatR.Domain.RequestHandler
 {
     public class SomeRequestHandler : IRequestHandler<SomeRequest, bool>
     {

@@ -1,11 +1,11 @@
-﻿using Core.Notifications;
+﻿using Examples.MediatR.Core.Notifications;
 using MediatR;
 using System;
 using System.Diagnostics;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Domain.NotificationHandler
+namespace Examples.MediatR.Domain.NotificationHandler
 {
     public class SomeNotificationHandler : INotificationHandler<SomeNotification>
     {

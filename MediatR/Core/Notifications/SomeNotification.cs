@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Core.Notifications
+namespace Examples.MediatR.Core.Notifications
 {
     public class SomeNotification : INotification
     {

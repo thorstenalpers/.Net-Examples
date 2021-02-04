@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Core.Behaviors
+namespace Examples.MediatR.Core.Behaviors
 {
     public class GenericRequestPreProcessor<TRequest> : IRequestPreProcessor<TRequest>
     {

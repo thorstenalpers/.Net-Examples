@@ -1,20 +1,20 @@
 ﻿using MediatR;
-using Microsoft.ApplicationInsights;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Core.Behaviors
+namespace Examples.MediatR.Core.Behaviors
 {
     public class GenericPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
     {
-        private readonly TelemetryClient telemetry;
+		private readonly ILogger _logger;
 
-        public GenericPipelineBehavior(TelemetryClient telemetry)
+		public GenericPipelineBehavior(ILogger logger)
         {
-            this.telemetry = telemetry;
+			_logger = logger;
         }
 
         public async Task<TResponse> Handle(TRequest request, CancellationToken cancellationToken, RequestHandlerDelegate<TResponse> next)
@@ -24,7 +24,7 @@ namespace Core.Behaviors
             var response = await next();
             timer.Stop();
             Debug.WriteLine($"GenericPipelineBehavior: response={response}, ExecutionTimeInSeconds = {timer.Elapsed.Seconds}");
-            this.telemetry.TrackEvent($"A Request of type {request.GetType().Name} tracked", new Dictionary<string, string>() { { "ExecutionTime", $"{timer.Elapsed.Seconds}" } });
+            _logger.LogInformation($"A Request of type {request.GetType().Name} tracked", new Dictionary<string, string>() { { "ExecutionTime", $"{timer.Elapsed.Seconds}" } });
             return response;
         }
     }

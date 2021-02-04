@@ -7,7 +7,7 @@ A MediatR pipelinebehavior is used to track the elapsed time of a request
 
 ## Requirements
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.Net Core 2.2](https://dotnet.microsoft.com/download/dotnet-core/2.2)
+* [.Net 5](https://dotnet.microsoft.com/download)
 
 ## Used libraries
 * [MediatR](https://github.com/jbogard/MediatR) 
@@ -30,12 +30,12 @@ This Swagger REST project is based on a template from Microsoft, see https://git
 
 On the top you see the swagger UI which triggers some requests and on the bottom is the output view of VS 2019 with log messages of each methode call.
 
-![Swagger UI](/doc/Swagger_MediatR.gif)
+![Swagger UI](../docs/MediatR/Swagger_MediatR.gif)
 
 ## See Elapsed / Execution Time of a Request in Secconds
 
 A request is tracked through a pipeline behavior as a custom event with application insights. The property ExecutionTime shows the duration of a request in seconds.
 
-![Application Insights](/doc/AppInsights_MediatR.gif)
+![Application Insights](../docs/MediatR/AppInsights_MediatR.gif)
 
 
