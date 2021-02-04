@@ -4,10 +4,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System;
-using System.Collections.Generic;
 
-namespace Masstransit.Producer
+namespace Examples.RabbitMQ.Producer
 {
 	public class Startup
 	{
@@ -27,11 +25,11 @@ namespace Masstransit.Producer
 			{
 				x.UsingRabbitMq((context, cfg) =>
 				{
-					cfg.Host(host: "localhost", virtualHost: "Masstransit",  h =>
-					{
-						h.Username("admin");
-						h.Password("password");
-					});
+					cfg.Host(host: "localhost", virtualHost: "Masstransit", h =>
+				   {
+					   h.Username("admin");
+					   h.Password("password");
+				   });
 
 					cfg.ConfigureEndpoints(context);
 				});

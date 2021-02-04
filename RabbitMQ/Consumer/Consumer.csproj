@@ -5,15 +5,18 @@
     <UserSecretsId>d35bd8f7-9b1e-4993-9abe-5e545af012cc</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
-    <AssemblyName>Rebus.Consumer</AssemblyName>
-    <RootNamespace>Rebus.Consumer</RootNamespace>
+    <AssemblyName>Examples.RabbitMQ.Consumer</AssemblyName>
+    <RootNamespace>Examples.RabbitMQ.Consumer</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="MassTransit" Version="7.1.4" />
+    <PackageReference Include="MassTransit.AspNetCore" Version="7.0.7" />
+    <PackageReference Include="MassTransit.Autofac" Version="7.0.7" />
+    <PackageReference Include="MassTransit.Extensions.DependencyInjection" Version="7.1.4" />
+    <PackageReference Include="MassTransit.Host" Version="6.3.2" />
+    <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.4" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.9" />
-    <PackageReference Include="Rebus" Version="6.4.1" />
-    <PackageReference Include="Rebus.RabbitMq" Version="7.3.0" />
-    <PackageReference Include="Rebus.ServiceProvider" Version="6.3.1" />
   </ItemGroup>
 
   <ItemGroup>

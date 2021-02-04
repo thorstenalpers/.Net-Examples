@@ -1,6 +1,6 @@
 # Tutorials
 
-This repository contains several examples.
+This repository contains several tutorials about web development.
 
 ## RabbitMQ
 - [RabbitMQ with .Net 5, Masstransit and Rebus](./RabbitMQ)

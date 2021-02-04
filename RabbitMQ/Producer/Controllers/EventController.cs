@@ -1,6 +1,6 @@
-﻿namespace Masstransit.Producer.Controllers
+﻿namespace Examples.RabbitMQ.Producer.Controllers
 {
-	using Masstransit.Contracts.Events;
+	using Examples.RabbitMQ.Contracts.Events;
 	using MassTransit;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.Extensions.Logging;

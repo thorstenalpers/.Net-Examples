@@ -1,4 +1,4 @@
-# Tutorial - RabbitMQ with .Net 5, Kubernetes and Masstransit
+# Tutorial - .RabbitMQ with .Net 5, Masstransit and Rebus
 
 RabbitMQ is a great messagbroker which helps in creating microservices which should be loosed coupled. To use RabbitMQ directly is difficult, especially in cases of error handling and dynamically creating queues and so on. 
 There are two popular libraries which I will describe and I will write a simple example application to demonstrate there behaviour.
@@ -43,13 +43,13 @@ With 10 million Nuget downloads, Masstransit is the most popular library for int
 * Select Masstransit Producer and Consumer
 * Press Ok, go back and run them together
 
-![Start multiple projects](../assets/RabbitMQ/Masstransit_Multiple_StartUps.png)
+![Start multiple projects](../docs/RabbitMQ/Masstransit_Multiple_StartUps.png)
 
 
 ### Live Demo
 
 
-![Live Demo](../assets/RabbitMQ/RabbitMQ_Masstransit_LiveDemo.gif)
+![Live Demo](../docs/RabbitMQ/RabbitMQ_Masstransit_LiveDemo.gif)
 
 
 ### Links

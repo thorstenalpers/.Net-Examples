@@ -1,9 +1,9 @@
-﻿using Masstransit.Contracts.Events;
+﻿using Examples.RabbitMQ.Contracts.Events;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace Masstransit.Consumer.Consumers
+namespace Examples.RabbitMQ.Consumer.Consumers
 {
 	public class SomeEventReceivedHandler : IConsumer<SomeEventReceived>
 	{

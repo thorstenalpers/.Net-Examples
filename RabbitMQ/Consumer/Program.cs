@@ -1,10 +1,10 @@
-namespace Masstransit.Consumer
+namespace Examples.RabbitMQ.Consumer
 {
-	using System;
-	using Masstransit.Consumer.Consumers;
+	using Examples.RabbitMQ.Consumer.Consumers;
 	using MassTransit;
 	using Microsoft.Extensions.DependencyInjection;
 	using Microsoft.Extensions.Hosting;
+	using System;
 
 	class Program
 	{
