@@ -1,4 +1,4 @@
-# Playground MediatR
+# MediatR with .Net 5
 
 This is an application to learn and understand MediatR, the most popular [CQRS](https://martinfowler.com/bliki/CQRS.html) library for .Net.
 
