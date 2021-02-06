@@ -1,8 +1,7 @@
 # RabbitMQ with Masstransit, .Net 5 and Kubernetes
 
 RabbitMQ is a great messagbroker which helps in creating microservices which should be loosed coupled. To use RabbitMQ directly is difficult, especially in cases of error handling and dynamically creating queues and so on. 
-There are two popular libraries which I will describe and I will write a simple example application to demonstrate there behaviour.
-I have added one solution which includes all examples, under each folder are all files required for one of those libraries. The script folder contains some scripts to deploy RabbitMQ and executes the port forwarding.
+Masstransit is a popular libraries which I will describe and I will write a simple example application to demonstrate it's behaviour.
 
 ## Requirements
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
@@ -43,24 +42,17 @@ With 10 million Nuget downloads, Masstransit is the most popular library for int
 * Select Masstransit Producer and Consumer
 * Press Ok, go back and run them together
 
-![Start multiple projects](../docs/RabbitMQ/Masstransit_Multiple_StartUps.png)
+![Start multiple projects](./_assets/Masstransit_Multiple_StartUps.png)
 
 
 ### Live Demo
 
 
-![Live Demo](../docs/RabbitMQ/RabbitMQ_Masstransit_LiveDemo.gif)
+![Live Demo](./_assets/RabbitMQ_Masstransit_LiveDemo.gif)
 
 
 ### Links
 
 * https://github.com/MassTransit/MassTransit
 * https://masstransit-project.com/
-
-
-## Rebus
-
-Coming Soon
-
-https://github.com/rebus-org/Rebus
 
