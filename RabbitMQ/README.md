@@ -42,13 +42,13 @@ With 10 million Nuget downloads, Masstransit is the most popular library for int
 * Select Masstransit Producer and Consumer
 * Press Ok, go back and run them together
 
-![Start multiple projects](./_assets/Masstransit_Multiple_StartUps.png)
+![Start multiple projects](./screenshots/Masstransit_Multiple_StartUps.png)
 
 
 ### Live Demo
 
 
-![Live Demo](./_assets/RabbitMQ_Masstransit_LiveDemo.gif)
+![Live Demo](./screenshots/RabbitMQ_Masstransit_LiveDemo.gif)
 
 
 ### Links
