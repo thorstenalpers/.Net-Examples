@@ -23,7 +23,7 @@
 		[HttpGet]
 		public async Task<IEnumerable<WeatherForecast>> GetAll()
 		{
-			return await _weatherForecastClient.GetAllAllAsync();
+			return await _weatherForecastClient.GetAsync();
 		}
 	}
 }
