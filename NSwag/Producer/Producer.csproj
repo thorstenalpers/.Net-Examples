@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -10,18 +10,24 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.3" />
     <PackageReference Include="NSwag.AspNetCore" Version="13.10.2" />
-     <!-- <PackageReference Include="NSwag.MSBuild" Version="13.10.2">
+    <PackageReference Include="NSwag.MSBuild" Version="13.10.2">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>-->
+    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Producer.Contracts\Producer.Contracts.csproj" />
   </ItemGroup>
-  <!--
+
+  <ItemGroup>
+    <None Update="generate.spec.nswag">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
   <Target Name="NSwag" AfterTargets="Build">
-    <Exec Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration)" />
+    <Exec Command="$(NSwagExe_Net50) run generate.spec.nswag" />
   </Target>
--->
+
 </Project>
