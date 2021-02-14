@@ -20,7 +20,8 @@ namespace Examples.NSwag.Consumer
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
-			services.AddSwaggerGen();
+			services.AddOpenApiDocument(d => d.Title = "Testing API");
+
 			services.AddHttpClient<IWeatherForecastClient, WeatherForecastClient>(client => client.BaseAddress = new Uri("http://localhost:29588"));
 		}
 
@@ -37,9 +38,11 @@ namespace Examples.NSwag.Consumer
 
 			app.UseAuthorization();
 
-			app.UseSwagger();
-			app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Consumer v1"));
-
+			app.UseOpenApi();
+			app.UseSwaggerUi3(cfg =>
+			{
+				cfg.DocExpansion = "full";
+			});
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();

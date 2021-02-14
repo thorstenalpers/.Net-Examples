@@ -18,13 +18,8 @@ namespace Examples.NSwag.Producer
 		// This method gets called by the runtime. Use this method to add services to the container.
 		public void ConfigureServices(IServiceCollection services)
 		{
-
 			services.AddControllers();
-			//services.AddSwaggerDocument();
-			services.AddOpenApiDocument(d => d.Title = "My Sample App");
-
-			//services.AddOpenApiDocument(d => d.Title = "My Sample App");
-
+			services.AddOpenApiDocument(d => d.Title = "WeatherForecast API");
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,7 +35,10 @@ namespace Examples.NSwag.Producer
 			app.UseRouting();
 			app.UseAuthorization();
 			app.UseOpenApi();
-			app.UseSwaggerUi3();
+			app.UseSwaggerUi3(cfg =>
+			{	
+				cfg.DocExpansion = "full";
+			});
 
 			app.UseEndpoints(endpoints =>
 			{
