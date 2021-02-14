@@ -42,7 +42,7 @@
       "createWebHostBuilderMethod": null,
       "startupType": null,
       "allowNullableBodyParameters": true,
-      "output": "../Producer.Contracts/producer-api-specification.json",
+      "output": "bin/Debug/net5.0/weather-forecast-api.json",
       "outputType": "OpenApi3",
       "newLineBehavior": "Auto",
       "assemblyPaths": [

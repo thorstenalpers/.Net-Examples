@@ -21,17 +21,21 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="generate.client.nswag">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="generate.api.client.nswag">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Update="generate.spec.nswag">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    <None Update="generate.api.specification.nswag">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
 
   <Target Name="NSwagSpec" AfterTargets="Build">
-    <Exec Command="$(NSwagExe_Net50) run generate.spec.nswag" />
-    <Exec Command="$(NSwagExe_Net50) run generate.client.nswag" />
+    <Exec Command="$(NSwagExe_Net50) run generate.api.specification.nswag" />
+  </Target>
+  
+  <Target Name="NSwagClient" AfterTargets="NSwagSpec">
+    <Exec Command="$(NSwagExe_Net50) run generate.api.client.nswag" />
   </Target>
 
 </Project>
+ 
