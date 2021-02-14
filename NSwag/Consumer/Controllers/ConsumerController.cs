@@ -1,6 +1,7 @@
 ﻿namespace Examples.NSwag.Consumer.Controllers
 {
 	using Examples.NSwag.Consumer.GeneratedClient;
+	using Examples.NSwag.Producer.Contracts.DTOs;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.Extensions.Logging;
 	using System.Collections.Generic;
@@ -23,14 +24,7 @@
 		[HttpGet]
 		public async Task<IEnumerable<WeatherForecast>> GetAll()
 		{
-			return await _weatherForecastClient.WeatherForecastAsync();
-		}
-
-		[HttpGet]
-		public async Task<IEnumerable<WeatherForecast>> GetBySummary(string summary)
-		{
-			var weatherForecasts = await _weatherForecastClient.WeatherForecastAsync();
-			return weatherForecasts.Where(w => w.Summary == summary);
+			return await _weatherForecastClient.GetAsync();
 		}
 	}
 }

@@ -31,8 +31,6 @@ namespace Examples.NSwag.Consumer
 				app.UseDeveloperExceptionPage();
 			}
 
-			var foo = app.ApplicationServices.GetService<IWeatherForecastClient>();
-
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
