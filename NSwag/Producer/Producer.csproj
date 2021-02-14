@@ -30,8 +30,8 @@
   </ItemGroup>
 
   <Target Name="NSwagScripts" AfterTargets="Build">
-    <Exec ConsoleToMSBuild="true" Command="$(NSwagExe_Net50) run generate.api.client.nswag" />
     <Exec ConsoleToMSBuild="true" Command="$(NSwagExe_Net50) run generate.api.specification.nswag" />
+    <Exec ConsoleToMSBuild="true" Command="$(NSwagExe_Net50) run generate.api.client.nswag" />
   </Target>
 
 </Project>
