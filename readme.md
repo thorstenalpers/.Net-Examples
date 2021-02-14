@@ -2,11 +2,7 @@
 
 This repository contains several examples about web development with Asp.Net.
 
-## HealthChecks
 - [HealthChecks with .Net 5 and AspNetCore.HealthChecks](./HealthCheck)
-
-## MediatR
 - [MediatR with .Net 5](./MediatR)
-  
-## RabbitMQ
 - [RabbitMQ with Masstransit, .Net 5 and Kubernetes](./RabbitMQ)
+- [Asp :Net 5 WebAPI with Swagger and NSwag. Auto-generation of OpenAPI specification and HttpClient](./NSwag)
