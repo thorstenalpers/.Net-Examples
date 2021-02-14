@@ -1,4 +1,4 @@
-# Asp .Net 5 WebAPI with Swagger and NSwag. Auto-generate an HttpApiClient during build!
+# Asp .Net 5 WebAPI with Swagger and NSwag. Auto-generate an typesafe and versionized HttpClient during build!
 
 NSwag is a popular toolchain for .Net and Typescript clients. Whith this toolchain you can create a typesafe HttpClient. Stop using RestEase or Refit. Use NSwag!
 
