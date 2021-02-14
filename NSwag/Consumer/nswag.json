@@ -1,0 +1,20 @@
+{
+  "runtime": "NetCore21",
+  "swaggerGenerator": {
+    "fromSwagger": {
+      "json": "",
+      "url": "swagger.json",
+      "output": null
+    }
+  },
+  "codeGenerators": {
+    "swaggerToCSharpClient": {
+      "additionalNamespaceUsages": [
+        "LightQuery.Client"
+      ],
+      "excludedTypeNames": [
+	    "UserModel"
+	  ]
+    }
+  }
+}

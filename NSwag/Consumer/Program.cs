@@ -1,4 +1,4 @@
-namespace Examples.gRPC.Consumer
+namespace Examples.NSwag.Consumer
 {
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.Extensions.Hosting;

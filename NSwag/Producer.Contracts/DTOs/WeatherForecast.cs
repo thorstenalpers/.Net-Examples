@@ -1,6 +1,6 @@
 using System;
 
-namespace Examples.NSwag.Contracts.DTOs
+namespace Examples.NSwag.Producer.Contracts.DTOs
 {
 	public class WeatherForecast
 	{

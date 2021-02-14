@@ -1,7 +1,10 @@
-﻿namespace Examples.gRPC.Producer.Controllers
+﻿namespace Examples.NSwag.Consumer.Controllers
 {
+	using Examples.NSwag.Consumer.GeneratedClient;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.Extensions.Logging;
+	using System.Collections.Generic;
+	using System.Linq;
 	using System.Threading.Tasks;
 
 	[ApiController]
@@ -9,17 +12,25 @@
 	public class ConsumerController : ControllerBase
 	{
 		private readonly ILogger<ConsumerController> _logger;
+		private readonly IWeatherForecastClient _weatherForecastClient;
 
-		public ConsumerController(ILogger<ConsumerController> logger)
+		public ConsumerController(ILogger<ConsumerController> logger, IWeatherForecastClient weatherForecastClient)
 		{
 			_logger = logger;
+			_weatherForecastClient = weatherForecastClient;
 		}
 
-		[HttpPost]
-		public async Task<ActionResult> Post(string message)
+		[HttpGet]
+		public async Task<IEnumerable<WeatherForecast>> GetAll()
 		{
-			_logger.LogInformation($"User submitted a message \"{message}\"");
-			return await Task.FromResult(Ok());
+			return await _weatherForecastClient.WeatherForecastAsync();
+		}
+
+		[HttpGet]
+		public async Task<IEnumerable<WeatherForecast>> GetBySummary(string summary)
+		{
+			var weatherForecasts = await _weatherForecastClient.WeatherForecastAsync();
+			return weatherForecasts.Where(w => w.Summary == summary);
 		}
 	}
 }

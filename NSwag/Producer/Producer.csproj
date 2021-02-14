@@ -2,17 +2,26 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Example.NSwag.Producer</RootNamespace>
-    <AssemblyName>Example.NSwag.Producer</AssemblyName>
+    <RootNamespace>Examples.NSwag.Producer</RootNamespace>
+    <AssemblyName>Examples.NSwag.Producer</AssemblyName>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="5.0.3" />
+    <PackageReference Include="NSwag.AspNetCore" Version="13.10.2" />
+     <!-- <PackageReference Include="NSwag.MSBuild" Version="13.10.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>-->
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contracts\Contracts.csproj" />
+    <ProjectReference Include="..\Producer.Contracts\Producer.Contracts.csproj" />
   </ItemGroup>
-
+  <!--
+  <Target Name="NSwag" AfterTargets="Build">
+    <Exec Command="$(NSwagExe_Core31) run nswag.json /variables:Configuration=$(Configuration)" />
+  </Target>
+-->
 </Project>

@@ -3,9 +3,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.OpenApi.Models;
 
-namespace Producer
+namespace Examples.NSwag.Producer
 {
 	public class Startup
 	{
@@ -21,10 +20,11 @@ namespace Producer
 		{
 
 			services.AddControllers();
-			services.AddSwaggerGen(c =>
-			{
-				c.SwaggerDoc("v1", new OpenApiInfo { Title = "Producer", Version = "v1" });
-			});
+			//services.AddSwaggerDocument();
+			services.AddOpenApiDocument(d => d.Title = "My Sample App");
+
+			//services.AddOpenApiDocument(d => d.Title = "My Sample App");
+
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -33,15 +33,14 @@ namespace Producer
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-				app.UseSwagger();
-				app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Producer v1"));
+
 			}
 
 			app.UseHttpsRedirection();
-
 			app.UseRouting();
-
 			app.UseAuthorization();
+			app.UseOpenApi();
+			app.UseSwaggerUi3();
 
 			app.UseEndpoints(endpoints =>
 			{

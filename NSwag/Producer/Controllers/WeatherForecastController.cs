@@ -1,11 +1,11 @@
-﻿using Examples.NSwag.Contracts.DTOs;
+﻿using Examples.NSwag.Producer.Contracts.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Producer.Controllers
+namespace Examples.NSwag.Producer.Controllers
 {
 	[ApiController]
 	[Route("[controller]")]
