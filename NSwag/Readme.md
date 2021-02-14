@@ -20,7 +20,7 @@ NSwag is a popular toolchain for .Net and Typescript clients. Whith this toolcha
 
 
 
-## Changing the API of the REST server application, here the Producer
+## Changing the API of the REST server application will automatically update the HttpClient used by the Consumer
 
 Any change of the producer API will automatically change the auto-generated WeatherForecastClient which is stored in the Producer.Contracts library. A consumer just has to refrence this library and gets a versionized and typesafe HttpClient.
 
