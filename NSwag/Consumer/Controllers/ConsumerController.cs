@@ -5,7 +5,6 @@
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.Extensions.Logging;
 	using System.Collections.Generic;
-	using System.Linq;
 	using System.Threading.Tasks;
 
 	[ApiController]
@@ -24,7 +23,7 @@
 		[HttpGet]
 		public async Task<IEnumerable<WeatherForecast>> GetAll()
 		{
-			return await _weatherForecastClient.GetAsync();
+			return await _weatherForecastClient.GetAllAllAsync();
 		}
 	}
 }

@@ -29,12 +29,9 @@
     </None>
   </ItemGroup>
 
-  <Target Name="NSwagSpec" AfterTargets="Build">
-    <Exec Command="$(NSwagExe_Net50) run generate.api.specification.nswag" />
-  </Target>
-  
-  <Target Name="NSwagClient" AfterTargets="NSwagSpec">
-    <Exec Command="$(NSwagExe_Net50) run generate.api.client.nswag" />
+  <Target Name="NSwagScripts" AfterTargets="Build">
+    <Exec ConsoleToMSBuild="true" Command="$(NSwagExe_Net50) run generate.api.client.nswag" />
+    <Exec ConsoleToMSBuild="true" Command="$(NSwagExe_Net50) run generate.api.specification.nswag" />
   </Target>
 
 </Project>

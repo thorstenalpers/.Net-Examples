@@ -8,7 +8,7 @@ using System.Linq;
 namespace Examples.NSwag.Producer.Controllers
 {
 	[ApiController]
-	[Route("[controller]/[action]")]
+	[Route("[controller]")]
 	public class WeatherForecastController : ControllerBase
 	{
 		private static readonly string[] Summaries = new[]
