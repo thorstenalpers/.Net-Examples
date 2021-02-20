@@ -7,6 +7,5 @@ namespace Tutorials.HealthCheck.WeatherService.Options
     {
         public const string SECTION_NAME = "HttpUris";
         public IList<Uri> HttpUris { get; set; }
-
     }
 }

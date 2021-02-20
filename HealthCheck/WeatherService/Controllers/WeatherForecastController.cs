@@ -48,7 +48,6 @@ namespace Tutorials.HealthCheck.WeatherService.Controllers
             .ToArray();
         }
 
-
         [HttpGet]
         public IEnumerable<WeatherForecast> GetFromRemoteDependency()
         {
