@@ -1,55 +1,51 @@
-﻿using Examples.HealthCheck.WeatherService.Options;
+﻿using Examples.HealthCheck.WeatherService.Models;
+using Examples.HealthCheck.WeatherService.Options;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Examples.HealthCheck.WeatherService.Controllers
 {
 	[ApiController]
-	[Route("[controller]/[action]")]
-	public class WeatherForecastController : ControllerBase
-	{
-		private static readonly string[] Summaries = new[]
-		{
-			"Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-		};
+    [Route("[controller]/[action]")]
+    public class WeatherForecastController : ControllerBase
+    {
+        private readonly ILogger<WeatherForecastController> _logger;
+        private readonly HttpUrisOptions _httpUrisOptions;
+        private readonly ExternalWeatherApiOptions _externalWeatherApiOptions;
+		private readonly IHttpClientFactory _httpClientFactory;
+		private readonly MyDbContext _myDbContext;
 
-		private readonly ILogger<WeatherForecastController> _logger;
-		private readonly HttpUrisOptions _httpUrisOptions;
-
-		public WeatherForecastController(ILogger<WeatherForecastController> logger, IOptionsMonitor<HttpUrisOptions> optionsMonitor)
-		{
-			_logger = logger;
-			_httpUrisOptions = optionsMonitor.CurrentValue;
+		public WeatherForecastController(ILogger<WeatherForecastController> logger, IOptionsMonitor<HttpUrisOptions> optionsMonitor,
+            IOptionsMonitor<ExternalWeatherApiOptions> externalWeatherApiOptionsMonitor,
+            IHttpClientFactory httpClientFactory,
+			MyDbContext myDbContext)
+        {
+            _logger = logger;
+            _httpUrisOptions = optionsMonitor.CurrentValue;
+            _externalWeatherApiOptions = externalWeatherApiOptionsMonitor.CurrentValue;
+			_httpClientFactory = httpClientFactory;
+			_myDbContext = myDbContext;
 		}
 
 		[HttpGet]
-		public IEnumerable<WeatherForecast> GetFromDatabase()
-		{
-			var rng = new Random();
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-			{
-				Date = DateTime.Now.AddDays(index),
-				TemperatureC = rng.Next(-20, 55),
-				Summary = Summaries[rng.Next(Summaries.Length)]
-			})
-			.ToArray();
-		}
+        public IEnumerable<WeatherForecast> GetFromDatabase()
+        {
+			return _myDbContext.WeatherForecasts;
+        }
 
-		[HttpGet]
-		public IEnumerable<WeatherForecast> GetFromRemoteDependency()
-		{
-			var rng = new Random();
-			return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-			{
-				Date = DateTime.Now.AddDays(index),
-				TemperatureC = rng.Next(-20, 55),
-				Summary = Summaries[rng.Next(Summaries.Length)]
-			})
-			.ToArray();
-		}
-	}
+        [HttpGet]
+        public async Task<IEnumerable<WeatherForecast>> GetFromRemoteDependency()
+        {
+            var client = _httpClientFactory.CreateClient("weatherforecast");
+            var response = await client.GetAsync(_externalWeatherApiOptions.Uri);
+            var weatherForecasts = await response.Content.ReadAsAsync<IEnumerable<WeatherForecast>>();
+            return weatherForecasts;
+        }
+    }
 }

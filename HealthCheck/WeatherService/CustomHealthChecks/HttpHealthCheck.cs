@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Examples.HealthCheck.WeatherService
+namespace Examples.HealthCheck.WeatherService.CustomHealthChecks
 {
 	public class HttpHealthCheck : IHealthCheck
 	{
@@ -25,7 +25,7 @@ namespace Examples.HealthCheck.WeatherService
 			var healthyResult = new Dictionary<string, object>();
 			var isHealthy = true;
 
-			foreach (var uri in _customHealthCheckOptions.RemoteDependencies.HttpUris)
+			foreach (var uri in _customHealthCheckOptions.RemoteDependencies.Uris)
 			{
 				try
 				{

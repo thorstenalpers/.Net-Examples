@@ -1,4 +1,4 @@
-﻿namespace Examples.HealthCheck.WeatherService
+﻿namespace Examples.HealthCheck.WeatherService.Models
 {
 	public enum EHealthCheckType
 	{
