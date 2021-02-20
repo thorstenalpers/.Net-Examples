@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tutorials.HealthCheck", "Tutorials.HealthCheck.csproj", "{AB363979-6EE3-4981-92CA-2C5627E7609A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService", "WeatherService\WeatherService.csproj", "{AB363979-6EE3-4981-92CA-2C5627E7609A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5633DB64-1F10-4142-89C0-D7AE4846D0CB}"
+	ProjectSection(SolutionItems) = preProject
+		Readme.md = Readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{AB363979-6EE3-4981-92CA-2C5627E7609A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB363979-6EE3-4981-92CA-2C5627E7609A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB363979-6EE3-4981-92CA-2C5627E7609A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

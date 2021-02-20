@@ -1,9 +1,6 @@
-﻿namespace Tutorials.HealthCheck.Options
+﻿namespace Tutorials.HealthCheck.WeatherService.Options
 {
-    using System;
-    using System.Collections.Generic;
-
-    public class CustomHealthCheckOptions
+    public class HealthCheckOptions
     {
         public const string SECTION_NAME = "HealthCheck";
 
@@ -11,6 +8,6 @@
         public string ApiPathLiveness { get; set; }
         public string UiPath { get; set; }
 
-        public IList<Uri> RemoteDependencies { get; set; }
+        public HttpUrisOptions RemoteDependencies { get; set; }
     }
 }
