@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Tutorials.HealthCheck.WeatherService</RootNamespace>
+    <RootNamespace>Examples.HealthCheck.WeatherService</RootNamespace>
     <UserSecretsId>152d916f-ee71-4756-b14a-280d85c6c471</UserSecretsId>
-    <AssemblyName>Tutorials.HealthCheck.WeatherService</AssemblyName>
+    <AssemblyName>Examples.HealthCheck.WeatherService</AssemblyName>
   </PropertyGroup>
 
   <ItemGroup>

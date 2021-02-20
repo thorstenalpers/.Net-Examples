@@ -1,8 +1,8 @@
-﻿namespace Tutorials.HealthCheck.WeatherService
+﻿namespace Examples.HealthCheck.WeatherService
 {
-    public enum EHealthCheckType
-    {
-        LIVENESS,
-        READINESS
-    };
+	public enum EHealthCheckType
+	{
+		LIVENESS,
+		READINESS
+	};
 }
