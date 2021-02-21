@@ -2,15 +2,18 @@ using Examples.HealthCheck.WeatherService.CustomHealthChecks;
 using Examples.HealthCheck.WeatherService.Models;
 using Examples.HealthCheck.WeatherService.Options;
 using HealthChecks.UI.Client;
+using MassTransit;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Linq;
+using System.Web;
 
 namespace Examples.HealthCheck.WeatherService
 {
@@ -29,7 +32,6 @@ namespace Examples.HealthCheck.WeatherService
             Configuration.GetSection(Options.HealthCheckOptions.SECTION_NAME).Bind(hcOptions);
 
             services.Configure<Options.HealthCheckOptions>(Configuration.GetSection(Options.HealthCheckOptions.SECTION_NAME));
-            services.Configure<HttpUrisOptions>(Configuration.GetSection(Options.HealthCheckOptions.SECTION_NAME).GetSection(HttpUrisOptions.SECTION_NAME));
             services.Configure<ExternalWeatherApiOptions>(myOptions =>
             {
                 myOptions.Uri = Configuration.GetValue<Uri>(ExternalWeatherApiOptions.KEY_NAME);
@@ -39,6 +41,19 @@ namespace Examples.HealthCheck.WeatherService
             services.AddHttpClient();
 			services.AddDbContext<MyDbContext>();
 
+			services.AddMassTransit(x =>
+			{
+				x.UsingRabbitMq((context, cfg) =>
+				{
+					cfg.Host(host: "localhost", h =>
+					{
+						h.Username("admin");
+						h.Password("password");
+					});
+
+					cfg.ConfigureEndpoints(context);
+				});
+			});
 
 			services.AddSwaggerGen(c =>
             {
@@ -46,14 +61,24 @@ namespace Examples.HealthCheck.WeatherService
             });
 
             var hcBuilder = services.AddHealthChecks();
-            if (hcOptions?.RemoteDependencies?.Uris?.Any() ?? false)
-            {
-                hcBuilder.AddCheck<HttpHealthCheck>(nameof(hcOptions.RemoteDependencies), tags: new[] { nameof(EHealthCheckType.READINESS) });
-            }
-			hcBuilder.AddSqlite("sqlite");
-        }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<Options.HealthCheckOptions> hcOptions)
+			foreach(var uri in hcOptions.ExternalServiceUris)
+			{
+				hcBuilder.AddUrlGroup(uri, tags: new[] { nameof(EHealthCheckType.READINESS) });
+			}
+            
+			hcBuilder.AddCheck<CustomDbCheck>(nameof(CustomDbCheck), tags: new[] { nameof(EHealthCheckType.READINESS) });
+			//hcBuilder.AddCheck<CustomRabbitMqCheck>(nameof(CustomRabbitMqCheck), tags: new[] { nameof(EHealthCheckType.READINESS) });
+
+			string rabbitConnectionString = $"amqp://admin:password@localhost";
+			hcBuilder.AddRabbitMQ(rabbitConnectionString: rabbitConnectionString, name: "RabbitMqCheck", tags: new[] { nameof(EHealthCheckType.READINESS) });
+			//hcBuilder.AddRabbitMQ(name: "RabbitMqCheck", tags: new[] { nameof(EHealthCheckType.READINESS) });
+
+
+			hcBuilder.AddSqlite(Configuration["SqliteConnectionString"], name: "SqliteCheck", tags: new[] { nameof(EHealthCheckType.READINESS) });
+		}
+
+		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<Options.HealthCheckOptions> hcOptions)
         {
             if (env.IsDevelopment())
             {

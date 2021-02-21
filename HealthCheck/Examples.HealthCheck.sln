@@ -4,17 +4,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 16.0.30804.86
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService", "WeatherService\WeatherService.csproj", "{AB363979-6EE3-4981-92CA-2C5627E7609A}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C} = {9689E6FE-D4C0-493A-BF67-6C8B240BC92C}
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "TestApp\TestApp.csproj", "{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5633DB64-1F10-4142-89C0-D7AE4846D0CB}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		Readme.md = Readme.md
 	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WeatherService.External", "IntegrationTests\WeatherService.External\WeatherService.External.csproj", "{6020F023-A96B-42F9-99C0-ED99EA4EC81F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestApp", "IntegrationTests\TestApp\TestApp.csproj", "{66B899ED-7742-4C96-BD02-ACC6F4E39B0E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.RabbitMQ", "IntegrationTests\AspNetCore.Diagnostics.HealthChecks\src\HealthChecks.RabbitMQ\HealthChecks.RabbitMQ.csproj", "{25E7A1C1-82EA-4AAE-8744-25A9D5348DFE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HealthChecks.Sqlite", "IntegrationTests\AspNetCore.Diagnostics.HealthChecks\src\HealthChecks.Sqlite\HealthChecks.Sqlite.csproj", "{83C050CD-D03E-4C63-8766-ADEF7C8FC128}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,10 +29,22 @@ Global
 		{AB363979-6EE3-4981-92CA-2C5627E7609A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB363979-6EE3-4981-92CA-2C5627E7609A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB363979-6EE3-4981-92CA-2C5627E7609A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9689E6FE-D4C0-493A-BF67-6C8B240BC92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6020F023-A96B-42F9-99C0-ED99EA4EC81F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6020F023-A96B-42F9-99C0-ED99EA4EC81F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6020F023-A96B-42F9-99C0-ED99EA4EC81F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6020F023-A96B-42F9-99C0-ED99EA4EC81F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B899ED-7742-4C96-BD02-ACC6F4E39B0E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B899ED-7742-4C96-BD02-ACC6F4E39B0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B899ED-7742-4C96-BD02-ACC6F4E39B0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B899ED-7742-4C96-BD02-ACC6F4E39B0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25E7A1C1-82EA-4AAE-8744-25A9D5348DFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25E7A1C1-82EA-4AAE-8744-25A9D5348DFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25E7A1C1-82EA-4AAE-8744-25A9D5348DFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25E7A1C1-82EA-4AAE-8744-25A9D5348DFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83C050CD-D03E-4C63-8766-ADEF7C8FC128}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83C050CD-D03E-4C63-8766-ADEF7C8FC128}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83C050CD-D03E-4C63-8766-ADEF7C8FC128}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83C050CD-D03E-4C63-8766-ADEF7C8FC128}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

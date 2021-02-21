@@ -1,4 +1,7 @@
-﻿namespace Examples.HealthCheck.WeatherService.Options
+﻿using System;
+using System.Collections.Generic;
+
+namespace Examples.HealthCheck.WeatherService.Options
 {
 	public class HealthCheckOptions
     {
@@ -8,6 +11,6 @@
         public string ApiPathLiveness { get; set; }
         public string UiPath { get; set; }
 
-        public HttpUrisOptions RemoteDependencies { get; set; }
+        public IList<Uri> ExternalServiceUris { get; set; }
     }
 }

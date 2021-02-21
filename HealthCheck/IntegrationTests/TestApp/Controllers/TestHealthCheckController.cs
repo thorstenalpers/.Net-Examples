@@ -22,7 +22,7 @@ namespace Examples.HealthCheck.TestApp.Controllers
 		}
 
 		[HttpGet]
-        public async Task<string> TestHealthCheckWithDatabase()
+        public async Task<string> StartTest()
         {
 			Uri healthUri = new Uri("http://localhost:6619/health/ready");
 			var healthCheckClient = _httpClientFactory.CreateClient("healthcheck");
@@ -36,6 +36,7 @@ namespace Examples.HealthCheck.TestApp.Controllers
 
 			_ = Task.Factory.StartNew(() => StartPollingApiWithDatabaseDependency(cancelTokenSource.Token));
 			_ = Task.Factory.StartNew(() => StartPollingApiWithRemoteDependency(cancelTokenSource.Token));
+			_ = Task.Factory.StartNew(() => StartPublishRabbitMqMessages(cancelTokenSource.Token));
 
 			while (stopwatch.Elapsed < TimeSpan.FromSeconds(100))
             {
@@ -45,6 +46,11 @@ namespace Examples.HealthCheck.TestApp.Controllers
                 {
                     cntHeathyChecks++;
                 }
+				else
+				{
+					var errorMessage = await response.Content.ReadAsStringAsync();
+					Trace.WriteLine(errorMessage);
+				}
 				cntChecks++;
 				await Task.Delay(TimeSpan.FromMilliseconds(100));
 			}
@@ -63,7 +69,7 @@ namespace Examples.HealthCheck.TestApp.Controllers
 
 		private async Task StartPollingApiWithRemoteDependency(CancellationToken cancellationToken)
 		{
-			Uri weatherApiUri = new Uri("http://localhost:6619/weatherforecast/GetFromRemoteDependency");
+			Uri weatherApiUri = new Uri("http://localhost:6619/weatherforecast/GetFromExternalService");
 			var weatherClient = _httpClientFactory.CreateClient("weatherservice");
 			_logger.LogInformation("Start polling API with remote dependency ...");
 			while (!cancellationToken.IsCancellationRequested)
@@ -94,6 +100,23 @@ namespace Examples.HealthCheck.TestApp.Controllers
 				}
 			}
 			_logger.LogInformation("End of polling API with DB dependencies ...");
+			_logger.LogInformation("---------------------------------.");
+		}
+		private async Task StartPublishRabbitMqMessages(CancellationToken cancellationToken)
+		{
+			Uri weatherApiUri = new Uri("http://localhost:6619/weatherforecast/PostToRabbitMqQueue");
+			var weatherClient = _httpClientFactory.CreateClient("weatherservice");
+			_logger.LogInformation("Start polling API with RabbitMq dependencies ...");
+			while (!cancellationToken.IsCancellationRequested)
+			{
+				var response = await weatherClient.GetAsync(weatherApiUri);
+
+				if (!response.IsSuccessStatusCode)
+				{
+					_logger.LogError("No success response from weather API with RabbitMq dependencies");
+				}
+			}
+			_logger.LogInformation("End of polling API with RabbitMq dependencies ...");
 			_logger.LogInformation("---------------------------------.");
 		}
 	}
