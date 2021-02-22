@@ -1,0 +1,16 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
+    <RootNamespace>Examples.gRPC.Contracts</RootNamespace>
+    <AssemblyName>Examples.gRPC.Contracts</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+	  <Protobuf Include="..\Protos\greet.proto" GrpcServices="Both" Link="Protos\greeting.proto" />
+	  <PackageReference Include="Grpc.Tools" Version="2.29.0" />
+	  <PackageReference Include="Microsoft.AspNetCore.Grpc.HttpApi" Version="0.1.0-alpha.20305.2" />
+  </ItemGroup>
+
+</Project>
