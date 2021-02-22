@@ -76,6 +76,12 @@ namespace Examples.HealthCheck.WeatherService
 
 
 			hcBuilder.AddSqlite(Configuration["SqliteConnectionString"], name: "SqliteCheck", tags: new[] { nameof(EHealthCheckType.READINESS) });
+
+			services.AddHealthChecksUI(setupSettings: setup =>
+			{
+				setup.AddHealthCheckEndpoint("Readiness", hcOptions.ApiPathReadiness);
+				setup.AddHealthCheckEndpoint("Liveness", hcOptions.ApiPathLiveness);
+			}).AddInMemoryStorage();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<Options.HealthCheckOptions> hcOptions)
@@ -105,7 +111,11 @@ namespace Examples.HealthCheck.WeatherService
                     Predicate = (check) => check.Tags.Contains(nameof(EHealthCheckType.READINESS)) || check.Tags.Contains(nameof(EHealthCheckType.LIVENESS)),
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
-                endpoints.MapDefaultControllerRoute();
+				endpoints.MapHealthChecksUI(setup =>
+				{
+					setup.UIPath = hcOptions.Value.UiPath;
+				});
+				endpoints.MapDefaultControllerRoute();
             });
         }
     }
