@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="5.0.1" />
+    <PackageReference Include="AspNetCore.HealthChecks.Sqlite" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="5.0.1" />
     <PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="5.0.1" />
@@ -26,11 +28,6 @@
       <PackageReference Include="MassTransit.Host" Version="6.3.2" />
 	  <PackageReference Include="MassTransit.RabbitMQ" Version="7.1.4" />
 	  <PackageReference Include="System.Runtime.Extensions" Version="4.3.1" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\IntegrationTests\AspNetCore.Diagnostics.HealthChecks\src\HealthChecks.RabbitMQ\HealthChecks.RabbitMQ.csproj" />
-    <ProjectReference Include="..\IntegrationTests\AspNetCore.Diagnostics.HealthChecks\src\HealthChecks.Sqlite\HealthChecks.Sqlite.csproj" />
   </ItemGroup>
 
 </Project>
