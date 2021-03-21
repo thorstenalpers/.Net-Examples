@@ -1,0 +1,18 @@
+repositories:
+- name: stable
+  url: https://charts.helm.sh/stable/
+- name: elastic
+  url: https://helm.elastic.co
+- name: bitnami
+  url: https://charts.bitnami.com/bitnami
+- name: nginx
+  url: https://helm.nginx.com/stable
+  
+helmDefaults:
+  tillerNamespace: helm
+  tillerless: true
+
+environments:
+  default:
+    values:
+      - Namespace: "default"

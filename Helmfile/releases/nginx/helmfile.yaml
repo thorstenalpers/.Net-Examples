@@ -1,0 +1,15 @@
+---
+bases:
+  - ../../commons/environments.yaml
+---
+releases:
+  - name: "nginx-ingress"
+    namespace: {{ .Values.Namespace }}
+    labels:
+      chart: "nginx-ingress"
+      repo: "nginx"
+    chart: "nginx/nginx-ingress"
+    version: ""
+    wait: true
+    values:
+      - values.yaml

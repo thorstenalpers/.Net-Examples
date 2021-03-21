@@ -1,0 +1,12 @@
+---
+bases:
+  - ../../commons/environments.yaml
+---
+releases:
+  - name: "rabbitmq"
+    namespace: {{ .Values.Namespace }}
+    chart: "bitnami/rabbitmq"
+    version: "8.11.3"
+    wait: true
+    values:
+      - values.yaml

@@ -1,0 +1,15 @@
+---
+bases:
+  - ../../commons/environments.yaml
+---
+releases:
+  - name: "apm-server"
+    namespace: {{ .Values.Namespace }}
+    labels:
+      chart: "apm-server"
+      repo: "elastic"
+    chart: "elastic/apm-server"
+    version: "7.11.2"
+    wait: true
+    values:
+      - values.yaml

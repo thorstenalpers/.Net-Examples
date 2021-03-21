@@ -1,0 +1,15 @@
+---
+bases:
+  - ../../commons/environments.yaml
+---
+releases:
+  - name: "kibana"
+    namespace: {{ .Values.Namespace }}
+    labels:
+      chart: "kibana"
+      repo: "elastic"
+    chart: "elastic/kibana"
+    version: "7.11.2"
+    wait: true
+    values:
+      - values.yaml
