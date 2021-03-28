@@ -3,13 +3,13 @@ bases:
   - ../../commons/environments.yaml
 ---
 releases:
-  - name: "nginx-ingress"
+  - name: "traefik"
     namespace: {{ .Values.Namespace }}
     labels:
-      chart: "nginx-ingress"
-      repo: "nginx"
-    chart: "nginx/nginx-ingress"
-    version: ""
+      chart: "traefik"
+      repo: "traefik"
+    chart: "traefik/traefik"
+    version: "9.17.5"
     wait: true
     values:
       - values.yaml
