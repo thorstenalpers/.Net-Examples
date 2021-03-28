@@ -43,7 +43,7 @@
       "className": "WeatherForecastClient",
       "operationGenerationMode": "MultipleClientsFromOperationId",
       "additionalNamespaceUsages": [
-        "Examples.NSwag.Producer.Contracts.DTOs"
+        "Examples.NSwag.Client.Producer.Contracts.DTOs"
       ],
       "additionalContractNamespaceUsages": [],
       "generateOptionalParameters": false,
@@ -57,7 +57,7 @@
       "wrapResponseMethods": [],
       "generateResponseClasses": true,
       "responseClass": "SwaggerResponse",
-      "namespace": "Examples.NSwag.Consumer.GeneratedClient",
+      "namespace": "Examples.NSwag.Client.Consumer.GeneratedClient",
       "requiredPropertiesMustBeDefined": true,
       "dateType": "System.DateTimeOffset",
       "jsonConverters": null,

@@ -7,6 +7,8 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
     <AssemblyName>Examples.NSwag.Client.Consumer</AssemblyName>
     <RootNamespace>Examples.NSwag.Client.Consumer</RootNamespace>
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <AnalysisMode>AllEnabledByDefault</AnalysisMode>
   </PropertyGroup>
 
   <ItemGroup>
