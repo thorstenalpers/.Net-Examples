@@ -4,7 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Examples.NSwag.Producer
+namespace Examples.NSwag.Client.Producer
 {
 	public class Startup
 	{
@@ -36,7 +36,7 @@ namespace Examples.NSwag.Producer
 			app.UseAuthorization();
 			app.UseOpenApi();
 			app.UseSwaggerUi3(cfg =>
-			{	
+			{
 				cfg.DocExpansion = "full";
 			});
 

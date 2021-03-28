@@ -1,7 +1,7 @@
-﻿namespace Examples.NSwag.Consumer.Controllers
+﻿namespace Examples.NSwag.Client.Consumer.Controllers
 {
-	using Examples.NSwag.Consumer.GeneratedClient;
-	using Examples.NSwag.Producer.Contracts.DTOs;
+	using Examples.NSwag.Client.Consumer.GeneratedClient;
+	using Examples.NSwag.Client.Producer.Contracts.DTOs;
 	using Microsoft.AspNetCore.Mvc;
 	using Microsoft.Extensions.Logging;
 	using System.Collections.Generic;

@@ -10,7 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{25B91263-7EEC-4CB4-A2D3-65F82208A2A3}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
-		Scripts\generate-client.cmd = Scripts\generate-client.cmd
+		Producer\generate.api.client.nswag = Producer\generate.api.client.nswag
+		Producer\generate.api.specification.nswag = Producer\generate.api.specification.nswag
 		README.md = README.md
 	EndProjectSection
 EndProject

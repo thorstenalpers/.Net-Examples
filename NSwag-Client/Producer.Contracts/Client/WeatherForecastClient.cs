@@ -4,7 +4,7 @@
 // </auto-generated>
 //----------------------
 
-using Examples.NSwag.Producer.Contracts.DTOs;
+using Examples.NSwag.Client.Producer.Contracts.DTOs;
 
 #pragma warning disable 108 // Disable "CS0108 '{derivedDto}.ToJson()' hides inherited member '{dtoBase}.ToJson()'. Use the new keyword if hiding was intended."
 #pragma warning disable 114 // Disable "CS0114 '{derivedDto}.RaisePropertyChanged(String)' hides inherited member 'dtoBase.RaisePropertyChanged(String)'. To make the current member override that implementation, add the override keyword. Otherwise add the new keyword."
@@ -13,7 +13,7 @@ using Examples.NSwag.Producer.Contracts.DTOs;
 #pragma warning disable 1591 // Disable "CS1591 Missing XML comment for publicly visible type or member ..."
 #pragma warning disable 8073 // Disable "CS8073 The result of the expression is always 'false' since a value of type 'T' is never equal to 'null' of type 'T?'"
 
-namespace Examples.NSwag.Consumer.GeneratedClient
+namespace Examples.NSwag.Client.Consumer.GeneratedClient
 {
     using System = global::System;
     

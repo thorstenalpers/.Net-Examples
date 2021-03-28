@@ -1,4 +1,4 @@
-using Examples.NSwag.Consumer.GeneratedClient;
+using Examples.NSwag.Client.Consumer.GeneratedClient;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -6,7 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 
-namespace Examples.NSwag.Consumer
+namespace Examples.NSwag.Client.Consumer
 {
 	public class Startup
 	{

@@ -1,4 +1,4 @@
-namespace Examples.NSwag.Consumer
+namespace Examples.NSwag.Client.Consumer
 {
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.Extensions.Hosting;

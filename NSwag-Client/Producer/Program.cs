@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
-namespace Examples.NSwag.Producer
+namespace Examples.NSwag.Client.Producer
 {
 	public class Program
 	{

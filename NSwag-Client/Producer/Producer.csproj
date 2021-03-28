@@ -2,8 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <RootNamespace>Examples.NSwag.Producer</RootNamespace>
-    <AssemblyName>Examples.NSwag.Producer</AssemblyName>
+    <RootNamespace>Examples.NSwag.Client.Producer</RootNamespace>
+    <AssemblyName>Examples.NSwag.Client.Producer</AssemblyName>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -28,11 +28,11 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
+	<!--
   <Target Name="NSwagScripts" AfterTargets="Build">
     <Exec ConsoleToMSBuild="true" Command="$(NSwagExe_Net50) run generate.api.specification.nswag" />
     <Exec ConsoleToMSBuild="true" Command="$(NSwagExe_Net50) run generate.api.client.nswag" />
-  </Target>
+  </Target>-->
 
 </Project>
  

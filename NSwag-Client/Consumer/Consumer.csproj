@@ -5,8 +5,8 @@
     <UserSecretsId>d35bd8f7-9b1e-4993-9abe-5e545af012cc</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
-    <AssemblyName>Examples.NSwag.Consumer</AssemblyName>
-    <RootNamespace>Examples.NSwag.Consumer</RootNamespace>
+    <AssemblyName>Examples.NSwag.Client.Consumer</AssemblyName>
+    <RootNamespace>Examples.NSwag.Client.Consumer</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
