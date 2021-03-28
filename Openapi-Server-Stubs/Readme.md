@@ -1,6 +1,6 @@
-# Asp .Net 5 WebAPI with Swagger and NSwag. Auto-generate an typesafe and versionized HttpClient during build!
+# Create Server Stubs using Swagger and Asp.Net
 
-NSwag is a popular toolchain for .Net and Typescript clients. Whith this toolchain you can create a typesafe HttpClient. Stop using RestEase or Refit. Use NSwag!
+In this example I will try out 2 popular server stub generator libraries which using swagger as input and create asp .net controllers. 
 
 ## Requirements
 * [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
