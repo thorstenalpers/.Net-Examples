@@ -1,5 +1,5 @@
-using Elastic.Apm.AspNetCore;
-using Examples.ElasticSearch.Producer.Models;
+using Examples.ElasticSearch.Consumer.Consumers;
+using Examples.ElasticSearch.Consumer.Models;
 using HealthChecks.UI.Client;
 using MassTransit;
 using Microsoft.AspNetCore.Builder;
@@ -8,12 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
-using Serilog;
-using Serilog.Sinks.Elasticsearch;
-using System;
-using System.Reflection;
 
-namespace Examples.ElasticSearch.Producer
+namespace Examples.ElasticSearch.Consumer
 {
 	public class Startup
 	{
@@ -26,16 +22,6 @@ namespace Examples.ElasticSearch.Producer
 
 		public void ConfigureServices(IServiceCollection services)
 		{
-
-			Log.Logger = new LoggerConfiguration()
-				.Enrich.FromLogContext()
-				.WriteTo.Elasticsearch(new ElasticsearchSinkOptions(new Uri("http://localhost:30031"))
-				{
-					AutoRegisterTemplate = true,
-					IndexFormat = $"{Assembly.GetExecutingAssembly().GetName().Name.ToLower()}-{DateTime.UtcNow:yyyy-MM}"
-				})
-				.CreateLogger();
-
 			var hcOptions = new Options.HealthCheckOptions();
 			Configuration.GetSection(Options.HealthCheckOptions.SECTION_NAME).Bind(hcOptions);
 
@@ -52,22 +38,45 @@ namespace Examples.ElasticSearch.Producer
 				setup.AddHealthCheckEndpoint("Liveness", hcOptions.ApiPathLiveness);
 			}).AddInMemoryStorage();
 
-			services.AddControllers();
-			services.AddSwaggerGen();
-
-			services.AddMassTransit(x =>
+			services.AddMassTransit(cfg =>
 			{
-				x.UsingRabbitMq((context, cfg) =>
-				{
-					cfg.Host(host: "localhost", h =>
-				   {
-					   h.Username("admin");
-					   h.Password("password");
-				   });
+				cfg.AddConsumer<SomeEventReceivedHandler>()
+					.Endpoint(e =>
+					{
 
-					cfg.ConfigureEndpoints(context);
+								// specify the endpoint as temporary (may be non-durable, auto-delete, etc.)
+								e.Temporary = false;
+
+								// specify an optional concurrent message limit for the consumer
+								e.ConcurrentMessageLimit = 8;
+
+								// only use if needed, a sensible default is provided, and a reasonable
+								// value is automatically calculated based upon ConcurrentMessageLimit if 
+								// the transport supports it.
+								e.PrefetchCount = 16;
+					}
+					);
+				cfg.AddBus(provider =>
+				{
+					return Bus.Factory.CreateUsingRabbitMq(cfg =>
+					{
+						cfg.Host(host: "localhost", h =>
+						{
+							h.Username("admin");
+							h.Password("password");
+						});
+						cfg.ReceiveEndpoint("EventReceived", e =>
+						{
+							e.Consumer<SomeEventReceivedHandler>(provider);
+						});
+					});
+
 				});
 			});
+
+			services.AddHostedService<MassTransitHostedService>();
+
+			services.AddSingleton<SomeEventReceivedHandler>();
 		}
 
 		public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IOptions<Options.HealthCheckOptions> hcOptions)
@@ -76,19 +85,10 @@ namespace Examples.ElasticSearch.Producer
 			{
 				app.UseDeveloperExceptionPage();
 			}
+
 			app.UseHttpsRedirection();
 
 			app.UseRouting();
-
-			app.UseAuthorization();
-
-			app.UseSwagger();
-
-			app.UseSwaggerUI(c =>
-			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Producer API V1");
-			});
-			app.UseElasticApm(Configuration);
 
 			app.UseEndpoints(endpoints =>
 			{
@@ -108,7 +108,6 @@ namespace Examples.ElasticSearch.Producer
 				{
 					setup.UIPath = hcOptions.Value.UiPath;
 				});
-				endpoints.MapControllers();
 			});
 		}
 	}

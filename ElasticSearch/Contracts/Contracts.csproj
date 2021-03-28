@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
-    <RootNamespace>Examples.RabbitMQ.Contracts</RootNamespace>
-    <AssemblyName>Examples.RabbitMQ.Contracts</AssemblyName>
+	<GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <RootNamespace>Examples.ElasticSearch.Contracts</RootNamespace>
+    <AssemblyName>Examples.ElasticSearch.Contracts</AssemblyName>
   </PropertyGroup>
 
 </Project>

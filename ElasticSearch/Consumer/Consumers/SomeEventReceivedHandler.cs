@@ -3,7 +3,7 @@ using MassTransit;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace Examples.RabbitMQ.Consumer.Consumers
+namespace Examples.ElasticSearch.Consumer.Consumers
 {
 	public class SomeEventReceivedHandler : IConsumer<SomeEventReceived>
 	{

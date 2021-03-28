@@ -1,4 +1,4 @@
-﻿namespace Examples.RabbitMQ.Producer.Controllers
+﻿namespace Examples.ElasticSearch.Producer.Controllers
 {
 	using Examples.RabbitMQ.Contracts.Events;
 	using MassTransit;

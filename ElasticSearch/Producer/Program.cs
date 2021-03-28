@@ -1,7 +1,8 @@
-namespace Examples.RabbitMQ.Producer
+namespace Examples.ElasticSearch.Producer
 {
 	using Microsoft.AspNetCore.Hosting;
 	using Microsoft.Extensions.Hosting;
+	using Serilog;
 
 	public class Program
 	{
@@ -15,6 +16,6 @@ namespace Examples.RabbitMQ.Producer
 				.ConfigureWebHostDefaults(webBuilder =>
 				{
 					webBuilder.UseStartup<Startup>();
-				});
+				}).UseSerilog();
 	}
 }

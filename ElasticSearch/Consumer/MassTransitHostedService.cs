@@ -1,4 +1,4 @@
-namespace Examples.RabbitMQ.Consumer
+namespace Examples.ElasticSearch.Consumer
 {
 	using MassTransit;
 	using Microsoft.Extensions.Hosting;
