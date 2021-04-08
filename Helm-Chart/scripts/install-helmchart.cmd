@@ -1,0 +1,1 @@
+helm install my-example ./Examples.HelmChart/charts/examples-helmchart

@@ -1,4 +1,4 @@
-# Default values for examples-helmchart.
+# Default values for my-example.
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
@@ -38,7 +38,7 @@ securityContext: {}
 
 service:
   type: ClusterIP
-  port: 30001
+  port: 80
 
 ingress:
   enabled: false
@@ -51,7 +51,7 @@ ingress:
       - path: /
         backend:
           serviceName: chart-example.local
-          servicePort: 30001
+          servicePort: 80
   tls: []
   #  - secretName: chart-example-tls
   #    hosts:
