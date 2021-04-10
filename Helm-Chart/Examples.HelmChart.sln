@@ -13,13 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BAA3F8A0-91AF-458D-8987-B0A068C4C02F}"
 	ProjectSection(SolutionItems) = preProject
-		scripts\create-dotnet-app.cmd = scripts\create-dotnet-app.cmd
-		scripts\create-helmchart.cmd = scripts\create-helmchart.cmd
-		scripts\install-helmchart.cmd = scripts\install-helmchart.cmd
-		scripts\port-forwarding.cmd = scripts\port-forwarding.cmd
-		scripts\publish-helmchart.cmd = scripts\publish-helmchart.cmd
-		scripts\test-helmchart.cmd = scripts\test-helmchart.cmd
-		scripts\uninstall-helmchart.cmd = scripts\uninstall-helmchart.cmd
+		scripts\01-dotnet-create-app.cmd = scripts\01-dotnet-create-app.cmd
+		scripts\02-docker-build.cmd = scripts\02-docker-build.cmd
+		scripts\03-docker-list.cmd = scripts\03-docker-list.cmd
+		scripts\04-docker-run.cmd = scripts\04-docker-run.cmd
+		scripts\05-docker-login.cmd = scripts\05-docker-login.cmd
+		scripts\06-docker-push.cmd = scripts\06-docker-push.cmd
+		scripts\07-helm-create-chart.cmd = scripts\07-helm-create-chart.cmd
+		scripts\08-helm-install-chart.cmd = scripts\08-helm-install-chart.cmd
+		scripts\09-helm-test-chart.cmd = scripts\09-helm-test-chart.cmd
+		scripts\10-helm-pull-chart.cmd = scripts\10-helm-pull-chart.cmd
+		scripts\11-kubectl-port-forwarding.cmd = scripts\11-kubectl-port-forwarding.cmd
+		scripts\12-helm-publish-chart.cmd = scripts\12-helm-publish-chart.cmd
+		scripts\13-helm-uninstall-chart.cmd = scripts\13-helm-uninstall-chart.cmd
 	EndProjectSection
 EndProject
 Global

@@ -1,6 +1,8 @@
 
 
 
+Reference of docker commands
+* https://docs.docker.com/engine/reference/run/
 
 Detailled Explanation of all files and fields of a helm chart
 * https://helm.sh/docs/topics/charts/
