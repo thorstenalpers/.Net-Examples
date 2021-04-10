@@ -1,0 +1,1 @@
+docker build -t registry.gitlab.com/netninja2202/project .

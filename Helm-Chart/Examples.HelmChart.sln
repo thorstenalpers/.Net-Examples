@@ -11,6 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Readme.md = Readme.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BAA3F8A0-91AF-458D-8987-B0A068C4C02F}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\create-dotnet-app.cmd = scripts\create-dotnet-app.cmd
+		scripts\create-helmchart.cmd = scripts\create-helmchart.cmd
+		scripts\install-helmchart.cmd = scripts\install-helmchart.cmd
+		scripts\port-forwarding.cmd = scripts\port-forwarding.cmd
+		scripts\publish-helmchart.cmd = scripts\publish-helmchart.cmd
+		scripts\test-helmchart.cmd = scripts\test-helmchart.cmd
+		scripts\uninstall-helmchart.cmd = scripts\uninstall-helmchart.cmd
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,6 +47,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BAA3F8A0-91AF-458D-8987-B0A068C4C02F} = {281A3B47-7B27-4244-BA8B-6ED603047A24}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {39113167-C560-44F8-A0CA-4F75332411F0}
