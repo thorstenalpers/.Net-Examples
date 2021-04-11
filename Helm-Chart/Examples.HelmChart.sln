@@ -22,9 +22,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{BAA3
 		scripts\07-helm-create-chart.cmd = scripts\07-helm-create-chart.cmd
 		scripts\08-helm-install-chart.cmd = scripts\08-helm-install-chart.cmd
 		scripts\09-helm-test-chart.cmd = scripts\09-helm-test-chart.cmd
-		scripts\10-helm-pull-chart.cmd = scripts\10-helm-pull-chart.cmd
-		scripts\11-kubectl-port-forwarding.cmd = scripts\11-kubectl-port-forwarding.cmd
-		scripts\12-helm-publish-chart.cmd = scripts\12-helm-publish-chart.cmd
+		scripts\10-helm-show-chart.cmd = scripts\10-helm-show-chart.cmd
+		scripts\11-expose-nodeport.cmd = scripts\11-expose-nodeport.cmd
+		scripts\12-helm-pack-chart.cmd = scripts\12-helm-pack-chart.cmd
 		scripts\13-helm-uninstall-chart.cmd = scripts\13-helm-uninstall-chart.cmd
 	EndProjectSection
 EndProject
