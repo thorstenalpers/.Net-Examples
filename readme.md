@@ -10,4 +10,4 @@ This repository contains several examples about web development with Asp.Net.
 - [ElasticSearch with RabbitMq and HealthChecks](./ElasticSearch)
 - [# Create Server Stubs using Swagger and Asp.Net](./Openapi-Server-Stubs)
 - [Helmfile Example of a Local Cluster](./Helmfile)
-- [reate and deploy a helm chart for a .Net5 WebApi project](./Helm-Chart)
+- [Create a .Net5 project and deploy it as helm chart](./Helm-Chart)

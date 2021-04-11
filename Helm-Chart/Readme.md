@@ -1,5 +1,5 @@
 
-# Create and deploy a helm chart for a .Net5 WebApi project
+# Create a .Net5 project and deploy it as helm chart
 
 This is a step by step tutorial to create a .Net5 WebApi project and at the end deploy it to local kubernetes cluster and debug with VisualStudio.
 
