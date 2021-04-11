@@ -8,5 +8,6 @@ This repository contains several examples about web development with Asp.Net.
 - [Asp .Net 5 WebAPI with Swagger and NSwag. Auto-generate an typesafe and versionized HttpClient during build!](./NSwag)
 - [gRPC with .Net 5 and Swashbuckle](./gRPC)
 - [ElasticSearch with RabbitMq and HealthChecks](./ElasticSearch)
-- [Helmfile Example of a Local Cluster](./Helmfile)
 - [# Create Server Stubs using Swagger and Asp.Net](./Openapi-Server-Stubs)
+- [Helmfile Example of a Local Cluster](./Helmfile)
+- [reate and deploy a helm chart for a .Net5 WebApi project](./Helm-Chart)
