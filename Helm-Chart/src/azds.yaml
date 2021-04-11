@@ -20,7 +20,7 @@ install:
     #   - name: myRegistryKeySecretName
     replicaCount: 1
     image:
-      repository: my-example
+      repository: registry.gitlab.com/netninja2202/project
       tag: $(tag)
       pullPolicy: Never
     ingress:
