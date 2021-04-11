@@ -29,8 +29,9 @@ dotnet sln Examples.HelmChart.sln add .\src
 
 ## Pack application into a docker image
 
-1. Add a Dockerfile
+1. Add two Dockerfiles
 
+1.1. Create a file named Dockerfile
 ```
 FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
 WORKDIR /app
@@ -54,6 +55,30 @@ COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Examples.HelmChart.dll"]
 ```
 
+1.2. and Dockerfile.develop
+
+```
+FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
+WORKDIR /app
+EXPOSE 80
+
+FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
+WORKDIR /src
+COPY ["Examples.HelmChart.csproj", "./"]
+
+RUN dotnet restore "./Examples.HelmChart.csproj"
+COPY . .
+WORKDIR "/src/."
+RUN dotnet build "Examples.HelmChart.csproj" -c Release -o /app/build
+
+FROM build AS publish
+RUN dotnet publish "Examples.HelmChart.csproj" -c Release -o /app/publish
+
+FROM base AS final
+WORKDIR /app
+COPY --from=publish /app/publish .
+ENTRYPOINT ["dotnet", "Examples.HelmChart.dll"]
+```
 2. Add docker configuration to launchSettings.json
 
 ```json
