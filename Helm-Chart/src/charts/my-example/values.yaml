@@ -84,3 +84,6 @@ affinity: {}
 
 probes:
   enabled: true
+
+nodeport:
+  enabled: false
