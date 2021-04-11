@@ -111,7 +111,7 @@ ENTRYPOINT ["dotnet", "Examples.HelmChart.dll"]
 
 3. Run project locally with VS2019 on Docker and make sure application is running
 
-4. Build docker file
+4. Build docker file so that a docker images is created, with docker images can you list the local docker images
 
 ```
 docker build -t my-example:latest .\
