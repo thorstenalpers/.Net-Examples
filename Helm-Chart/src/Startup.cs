@@ -2,7 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
@@ -28,7 +30,8 @@ namespace Examples.HelmChart
         {
 
             services.AddControllers();
-            services.AddSwaggerGen(c =>
+			services.AddHealthChecks();
+			services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Examples.HelmChart", Version = "v1" });
             });
@@ -40,20 +43,31 @@ namespace Examples.HelmChart
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Examples.HelmChart v1"));
             }
 
-            app.UseHttpsRedirection();
+			app.UseSwagger();
+			app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Examples.HelmChart v1"));
 
-            app.UseRouting();
+			app.UseRouting();
 
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
-            });
+
+				endpoints.MapHealthChecks("/health/live", new HealthCheckOptions
+				{
+					Predicate = _ => true,      // TODO add checks
+					ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+				});
+
+				endpoints.MapHealthChecks("/health/ready", new HealthCheckOptions
+				{
+					Predicate = _ => true,		// TODO add checks
+					ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+				});
+			});
         }
     }
 }
