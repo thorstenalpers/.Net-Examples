@@ -2,6 +2,13 @@
 root = true
 
 # C# files
+[*.csproj]
+
+# Indentation and spacing
+indent_size = 2
+indent_style = space
+
+# C# files
 [*.cs]
 
 #### Core EditorConfig Options ####
@@ -205,3 +212,6 @@ dotnet_naming_style.begins_with_i.required_suffix =
 dotnet_naming_style.begins_with_i.word_separator =
 dotnet_naming_style.begins_with_i.capitalization = pascal_case
 
+
+# CS1591: Missing XML comment for publicly visible type or member
+dotnet_diagnostic.CS1591.severity = suggestion
