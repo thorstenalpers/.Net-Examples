@@ -18,6 +18,11 @@ namespace Examples.RabbitMQ.Producer
 
 		public void ConfigureServices(IServiceCollection services)
 		{
+			var foo1 = Configuration["RabbitMq:Username"];
+
+			var foo2 = Configuration["RabbitMq:Password"];
+
+
 			services.AddControllers();
 			services.AddSwaggerGen();
 
@@ -25,10 +30,10 @@ namespace Examples.RabbitMQ.Producer
 			{
 				x.UsingRabbitMq((context, cfg) =>
 				{
-					cfg.Host(host: "localhost", virtualHost: "Masstransit", h =>
+					cfg.Host(host: Configuration["RabbitMq:Uri"], h =>
 				   {
-					   h.Username("admin");
-					   h.Password("password");
+					   h.Username(Configuration["RabbitMq:Username"]);
+					   h.Password(Configuration["RabbitMq:Password"]);
 				   });
 
 					cfg.ConfigureEndpoints(context);
@@ -43,8 +48,6 @@ namespace Examples.RabbitMQ.Producer
 				app.UseDeveloperExceptionPage();
 			}
 
-			app.UseHttpsRedirection();
-
 			app.UseRouting();
 
 			app.UseAuthorization();
@@ -54,7 +57,7 @@ namespace Examples.RabbitMQ.Producer
 			app.UseSwaggerUI(c =>
 			{
 				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Producer API V1");
-				c.RoutePrefix = string.Empty;
+				c.RoutePrefix = "swagger";
 			});
 
 			app.UseEndpoints(endpoints =>

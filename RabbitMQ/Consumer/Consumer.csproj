@@ -4,7 +4,7 @@
     <TargetFramework>net5.0</TargetFramework>
     <UserSecretsId>d35bd8f7-9b1e-4993-9abe-5e545af012cc</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Consumer.xml</DocumentationFile>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <AssemblyName>Examples.RabbitMQ.Consumer</AssemblyName>
     <RootNamespace>Examples.RabbitMQ.Consumer</RootNamespace>
   </PropertyGroup>

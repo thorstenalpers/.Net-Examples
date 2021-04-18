@@ -6,7 +6,7 @@
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Local"
       },
       "dotnetRunMessages": "true",
       "applicationUrl": "http://localhost:5000"
@@ -15,11 +15,17 @@
       "commandName": "Docker",
       "launchBrowser": true,
       "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}/swagger",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "LocalDocker"
+      },
       "publishAllPorts": true
     },
     "Bridge to Kubernetes": {
       "commandName": "AzureDevSpacesLocal",
-      "launchBrowser": true
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "LocalCluster"
+      }
     }
   }
 }
