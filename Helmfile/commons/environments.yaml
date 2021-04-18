@@ -5,8 +5,9 @@ repositories:
   url: https://helm.elastic.co
 - name: bitnami
   url: https://charts.bitnami.com/bitnami
-- name: traefik
-  url: https://helm.traefik.io/traefik
+- name: ingress-nginx
+  url: https://kubernetes.github.io/ingress-nginx
+
   
 helmDefaults:
   tillerNamespace: helm

@@ -2,7 +2,6 @@
 # Ordered list of releases.
 helmfiles:
   - "releases/elasticsearch/helmfile.yaml"
-  - "releases/apm-server/helmfile.yaml"
   - "releases/kibana/helmfile.yaml"
   - "releases/rabbitmq/helmfile.yaml"
-  - "releases/traefik/helmfile.yaml"
+  - "releases/nginx/helmfile.yaml"
