@@ -4,7 +4,7 @@ build:
   context: .
   dockerfile: Dockerfile
 install:
-  chart: charts/my-example
+  chart: charts/producer
   values:
   - values.dev.yaml?
   - secrets.dev.yaml?
@@ -20,8 +20,8 @@ install:
     #   - name: myRegistryKeySecretName
     replicaCount: 1
     image:
-      repository: registry.gitlab.com/netninja2202/project
-      tag: $(tag)
+      repository: producer
+      tag: latest
       pullPolicy: Never
     ingress:
       annotations:
@@ -30,11 +30,11 @@ install:
       # This expands to form the service's public URL: [space.s.][rootSpace.]my-example.<random suffix>.<region>.azds.io
       # Customize the public URL by changing the 'my-example' text between the $(rootSpacePrefix) and $(hostSuffix) tokens
       # For more information see https://aka.ms/devspaces/routing
-      - $(spacePrefix)$(rootSpacePrefix)my-example$(hostSuffix)
+      - $(spacePrefix)$(rootSpacePrefix)producer$(hostSuffix)
 configurations:
   develop:
     build:
-      dockerfile: Dockerfile.develop
+      dockerfile: Dockerfile
       useGitIgnore: true
       args:
         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}

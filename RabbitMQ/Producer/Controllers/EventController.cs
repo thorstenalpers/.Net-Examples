@@ -20,7 +20,13 @@
             _logger = logger;
         }
 
-        [HttpPost]
+		[HttpGet]
+		public async Task<ActionResult> Get()
+		{
+			return Ok("Healthy");
+		}
+
+		[HttpPost]
         public async Task<ActionResult> Post(string message)
         {
             _logger.LogInformation($"User submitted a message \"{message}\"");

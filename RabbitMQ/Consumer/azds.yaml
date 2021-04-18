@@ -4,7 +4,7 @@ build:
   context: .
   dockerfile: Dockerfile
 install:
-  chart: charts/my-example
+  chart: charts/consumer
   values:
   - values.dev.yaml?
   - secrets.dev.yaml?
@@ -20,32 +20,29 @@ install:
     #   - name: myRegistryKeySecretName
     replicaCount: 1
     image:
-      repository: registry.gitlab.com/netninja2202/project
-      tag: $(tag)
+      repository: consumer
+      tag: latest
       pullPolicy: Never
     ingress:
       annotations:
         kubernetes.io/ingress.class: traefik-azds
       hosts:
-      # This expands to form the service's public URL: [space.s.][rootSpace.]my-example.<random suffix>.<region>.azds.io
-      # Customize the public URL by changing the 'my-example' text between the $(rootSpacePrefix) and $(hostSuffix) tokens
+      # This expands to form the service's public URL: [space.s.][rootSpace.]consumer.<random suffix>.<region>.azds.io
+      # Customize the public URL by changing the 'consumer' text between the $(rootSpacePrefix) and $(hostSuffix) tokens
       # For more information see https://aka.ms/devspaces/routing
-      - $(spacePrefix)$(rootSpacePrefix)my-example$(hostSuffix)
+      - $(spacePrefix)$(rootSpacePrefix)consumer$(hostSuffix)
 configurations:
   develop:
     build:
-      dockerfile: Dockerfile.develop
+      dockerfile: Dockerfile
       useGitIgnore: true
       args:
         BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
     container:
       sync:
-      - "**/Pages/**"
-      - "**/Views/**"
-      - "**/wwwroot/**"
       - "!**/*.{sln,csproj}"
       command: [dotnet, run, --no-restore, --no-build, --no-launch-profile, -c, "${BUILD_CONFIGURATION:-Debug}"]
       iterate:
-        processesToKill: [dotnet, vsdbg, my-example]
+        processesToKill: [dotnet, vsdbg, consumer]
         buildCommands:
         - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]

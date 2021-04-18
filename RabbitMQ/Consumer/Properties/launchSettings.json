@@ -13,10 +13,10 @@
     },
     "Docker": {
       "commandName": "Docker",
-      "publishAllPorts": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "LocalDocker"
-      }
+      },
+      "publishAllPorts": true
     },
     "Bridge to Kubernetes": {
       "commandName": "AzureDevSpacesLocal",

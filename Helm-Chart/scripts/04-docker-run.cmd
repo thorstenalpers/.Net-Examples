@@ -7,3 +7,5 @@ REM --rm =   Automatically remove the container when it exits
 REM -e =     Set environment variables
 REM --name = Give docker container a name, default is a random name
 REM -p =     Publish port
+
+set /p DUMMY=Hit ENTER to continue...

@@ -1,1 +1,3 @@
 helm uninstall my-example 
+
+set /p DUMMY=Hit ENTER to continue...

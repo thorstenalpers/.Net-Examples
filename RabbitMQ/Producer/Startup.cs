@@ -18,12 +18,16 @@ namespace Examples.RabbitMQ.Producer
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var foo1 = Configuration["RabbitMq:Username"];
-
-            var foo2 = Configuration["RabbitMq:Password"];
-
             services.AddControllers();
-            services.AddSwaggerGen();
+            services.AddSwaggerGen(
+				//c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer
+				//{
+				//	Url = 
+				//})				//c.AddServer(new Microsoft.OpenApi.Models.OpenApiServer
+				//{
+				//	Url = 
+				//})
+			);
 
             services.AddMassTransit(x =>
             {
@@ -46,8 +50,10 @@ namespace Examples.RabbitMQ.Producer
             {
                 app.UseDeveloperExceptionPage();
             }
+			
+			//app.UsePathBase(Configuration["BasePath"]);			
 
-            app.UseRouting();
+			app.UseRouting();
 
             app.UseAuthorization();
 
@@ -57,10 +63,16 @@ namespace Examples.RabbitMQ.Producer
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Producer API V1");
                 c.RoutePrefix = "swagger";
-            });
+				//c.RootUrl(req => { return "http://localhost:8080/myapi"; });
+				//c.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
+				//{
+				//	swaggerDoc.Servers = new List<OpenApiServer> { new OpenApiServer { Url = $"{httpReq.Scheme}://{httpReq.Host.Value}{basePath}" } };
+				//});
+			});
 
             app.UseEndpoints(endpoints =>
             {
+
                 endpoints.MapControllers();
             });
         }
