@@ -8,62 +8,61 @@ using Microsoft.Extensions.Hosting;
 namespace Examples.RabbitMQ.Producer
 {
 	public class Startup
-	{
-		public IConfiguration Configuration { get; }
+    {
+        public IConfiguration Configuration { get; }
 
-		public Startup(IConfiguration configuration)
-		{
-			Configuration = configuration;
-		}
+        public Startup(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
 
-		public void ConfigureServices(IServiceCollection services)
-		{
-			var foo1 = Configuration["RabbitMq:Username"];
+        public void ConfigureServices(IServiceCollection services)
+        {
+            var foo1 = Configuration["RabbitMq:Username"];
 
-			var foo2 = Configuration["RabbitMq:Password"];
+            var foo2 = Configuration["RabbitMq:Password"];
 
+            services.AddControllers();
+            services.AddSwaggerGen();
 
-			services.AddControllers();
-			services.AddSwaggerGen();
+            services.AddMassTransit(x =>
+            {
+                x.UsingRabbitMq((context, cfg) =>
+                {
+                    cfg.Host(host: Configuration["RabbitMq:Uri"], h =>
+                   {
+                       h.Username(Configuration["RabbitMq:Username"]);
+                       h.Password(Configuration["RabbitMq:Password"]);
+                   });
 
-			services.AddMassTransit(x =>
-			{
-				x.UsingRabbitMq((context, cfg) =>
-				{
-					cfg.Host(host: Configuration["RabbitMq:Uri"], h =>
-				   {
-					   h.Username(Configuration["RabbitMq:Username"]);
-					   h.Password(Configuration["RabbitMq:Password"]);
-				   });
+                    cfg.ConfigureEndpoints(context);
+                });
+            });
+        }
 
-					cfg.ConfigureEndpoints(context);
-				});
-			});
-		}
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
 
-		public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
-		{
-			if (env.IsDevelopment())
-			{
-				app.UseDeveloperExceptionPage();
-			}
+            app.UseRouting();
 
-			app.UseRouting();
+            app.UseAuthorization();
 
-			app.UseAuthorization();
+            app.UseSwagger();
 
-			app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Producer API V1");
+                c.RoutePrefix = "swagger";
+            });
 
-			app.UseSwaggerUI(c =>
-			{
-				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Producer API V1");
-				c.RoutePrefix = "swagger";
-			});
-
-			app.UseEndpoints(endpoints =>
-			{
-				endpoints.MapControllers();
-			});
-		}
-	}
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+        }
+    }
 }
