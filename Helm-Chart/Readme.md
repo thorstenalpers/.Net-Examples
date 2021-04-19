@@ -55,29 +55,6 @@ COPY --from=publish /app/publish .
 ENTRYPOINT ["dotnet", "Examples.HelmChart.dll"]
 ```
 
-1.2. and Dockerfile.develop
-
-```
-FROM mcr.microsoft.com/dotnet/aspnet:5.0 AS base
-WORKDIR /app
-EXPOSE 80
-
-FROM mcr.microsoft.com/dotnet/sdk:5.0 AS build
-WORKDIR /src
-COPY ["Examples.HelmChart.csproj", "./"]
-
-RUN dotnet restore "./Examples.HelmChart.csproj"
-COPY . .
-WORKDIR "/src/."
-RUN dotnet build "Examples.HelmChart.csproj" -c Release -o /app/build
-
-FROM build AS publish
-RUN dotnet publish "Examples.HelmChart.csproj" -c Release -o /app/publish
-
-FROM base AS final
-WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Examples.HelmChart.dll"]
 ```
 2. Add docker configuration to launchSettings.json
 
@@ -215,74 +192,15 @@ https://helm.sh/docs/chart_best_practices/conventions/
 ## Debug application with Bridge to Kubernetes
 
 
-1. Add a new file named azds.yaml
+1. Add some breakpoints in the controller actions
 
-```
-kind: helm-release
-apiVersion: 1.1
-build:
-  context: .
-  dockerfile: Dockerfile
-install:
-  chart: charts/my-example
-  values:
-  - values.dev.yaml?
-  - secrets.dev.yaml?
-  set:
-    # Optionally, specify an array of imagePullSecrets. These secrets must be manually created in the namespace.
-    # This will override the imagePullSecrets array in values.yaml file.
-    # If the dockerfile specifies any private registry, the imagePullSecret for that registry must be added here.
-    # ref: https://kubernetes.io/docs/concepts/containers/images/#specifying-imagepullsecrets-on-a-pod
-    #
-    # For example, the following uses credentials from secret "myRegistryKeySecretName".
-    #
-    # imagePullSecrets:
-    #   - name: myRegistryKeySecretName
-    replicaCount: 1
-    image:
-      repository: my-example
-      tag: $(tag)
-      pullPolicy: Never
-    ingress:
-      annotations:
-        kubernetes.io/ingress.class: traefik-azds
-      hosts:
-      # This expands to form the service's public URL: [space.s.][rootSpace.]my-example.<random suffix>.<region>.azds.io
-      # Customize the public URL by changing the 'my-example' text between the $(rootSpacePrefix) and $(hostSuffix) tokens
-      # For more information see https://aka.ms/devspaces/routing
-      - $(spacePrefix)$(rootSpacePrefix)my-example$(hostSuffix)
-configurations:
-  develop:
-    build:
-      dockerfile: Dockerfile.develop
-      useGitIgnore: true
-      args:
-        BUILD_CONFIGURATION: ${BUILD_CONFIGURATION:-Debug}
-    container:
-      sync:
-      - "**/Pages/**"
-      - "**/Views/**"
-      - "**/wwwroot/**"
-      - "!**/*.{sln,csproj}"
-      command: [dotnet, run, --no-restore, --no-build, --no-launch-profile, -c, "${BUILD_CONFIGURATION:-Debug}"]
-      iterate:
-        processesToKill: [dotnet, vsdbg, my-example]
-        buildCommands:
-        - [dotnet, build, --no-restore, -c, "${BUILD_CONFIGURATION:-Debug}"]
+2. Run Bridge to Kubernetes and enter as apllication url http://localhost:30031/swagger
 
-```
-
-2. Add some breakpoints in the controller actions
-
-3. Run Bridge to Kubernetes and enter as apllication url http://localhost:30031/swagger
-
-4. Execute some API actions from within SwaggerUI
+3. Execute some API actions from within SwaggerUI
 
 ### Additional Links
 
 Bridge to Kubernetes
 * https://docs.microsoft.com/de-de/visualstudio/containers/overview-bridge-to-kubernetes?view=vs-2019
 
-Configure Bridge to Kubernetes
-https://docs.microsoft.com/de-de/azure/dev-spaces/how-dev-spaces-works-up
 
